@@ -1,5 +1,6 @@
 package com.waldo.patrick.settings;
 
+import com.waldo.patrick.Application;
 import com.waldo.patrick.Main;
 import com.waldo.patrick.database.classes.TableType;
 import com.waldo.patrick.utils.ResourceManager;

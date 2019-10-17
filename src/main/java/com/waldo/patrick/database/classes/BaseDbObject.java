@@ -7,10 +7,10 @@ public abstract class BaseDbObject implements IDbObject {
     protected String name;
 
 
-    @Override
-    public String toString() {
-        return getName();
-    }
+//    @Override
+//    public String toString() {
+//        return getName();
+//    }
 
     @Override
     public boolean equals(Object o) {

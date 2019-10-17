@@ -20,7 +20,9 @@ public class Main {
         if (!Application.app().initialize()) {
             System.out.println("Failed to initialize");
         } else {
-            Application.app().test();
+            //Application.app().test();
+            Application.app().createScripts();
+
             String input = scanner.nextLine();
         }
     }

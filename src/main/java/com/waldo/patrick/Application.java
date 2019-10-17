@@ -5,14 +5,25 @@ import com.waldo.patrick.database.classes.DbColumn;
 import com.waldo.patrick.database.classes.DbForeignKey;
 import com.waldo.patrick.database.classes.DbTable;
 import com.waldo.patrick.database.classes.TableType;
+import com.waldo.patrick.scripts.StoredProcedure;
 import com.waldo.patrick.settings.AppSettings;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
     public static final String TAG = "Application";
+
+    private static final String selectStatement = "CREATE DEFINER=`root`@`localhost` PROCEDURE `%sSelectAll`()\n" +
+            "BEGIN\n" +
+            "\tSELECT * FROM %s;\n" +
+            "END";
+
 
     // Singleton
     private static final Application INSTANCE = new Application();
@@ -76,6 +87,59 @@ public class Application {
     }
 
     public void createScripts() {
-        // TODO
+
+        createSelectAllScripts();
+        createUpdateScripts();
+        createInsertScripts();
+        createDeleteScripts();
+    }
+
+    private void createSelectAllScripts() {
+        ArrayList<StoredProcedure> selectAllProcedures = new ArrayList<>();
+        for (DbTable table : DbManager.db().getTables(TableType.Data)) {
+            StoredProcedure selectAllProcedure = new StoredProcedure();
+            selectAllProcedure.setName(table.getName() + "SelectAll");
+            // Vul '%s' in in 'selectStatement' String
+            String content = String.format(selectStatement, table.getName(), table.getName());
+            selectAllProcedure.setContent(content);
+            selectAllProcedures.add(selectAllProcedure);
+        }
+
+        createFiles(selectAllProcedures);
+    }
+
+    private void createUpdateScripts() {
+        ArrayList<StoredProcedure> updateProcedures = new ArrayList<>();
+        for (DbTable table : DbManager.db().getTables(TableType.Data)) {
+            StoredProcedure updateProcedure = new StoredProcedure();
+            updateProcedure.setName(table.getName() + "Update");
+
+            for (DbColumn column : table.getColumns()) {
+                //...
+            }
+
+        }
+
+        createFiles(updateProcedures);
+    }
+
+    private void createInsertScripts() {
+
+    }
+
+    private void createDeleteScripts() {
+
+    }
+
+    private void createFiles(ArrayList<StoredProcedure> procedures) {
+        for (StoredProcedure procedure : procedures) {
+            try {
+                PrintWriter writer = new PrintWriter("D:\\gebruiker\\Documents\\scripts\\" + procedure.getName() + ".script", "UTF-8");
+                writer.print(procedure.getContent());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

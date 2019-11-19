@@ -1,30 +1,57 @@
 package com.waldo.patrick;
 
-import com.waldo.patrick.settings.AppSettings;
+import com.waldo.patrick.database.classes.DbConnection;
 
 import java.io.File;
-import java.util.Scanner;
 
 public class Main {
 
+//    db.Address=192.168.0.248
+//    db.Schema=ww
+//    db.User=waldo
+//    db.Password=waldow
 
     public static void main(String[] args) {
         // Start up
         String startUpPath = new File("").getAbsolutePath() + File.separator;
         System.out.println("Start up @" + startUpPath);
-        readArguments(args);
 
-        Scanner scanner = new Scanner(System.in);
-
-        // Start app
-        if (!Application.app().initialize()) {
-            System.out.println("Failed to initialize");
+        // Check
+        if (args.length < 4 || args[0] == null) {
+            System.out.println("Not enough arguments!");
         } else {
-            //Application.app().test();
-            Application.app().createScripts();
 
-            String input = scanner.nextLine();
+            DbConnection dbConnection;
+            String filePath = ".";
+            String updateScriptName = "updatescript.sql";
+            try {
+                dbConnection = new DbConnection(
+                        args[0],
+                        args[1],
+                        args[2],
+                        args[3]);
+
+                if (args.length >= 5) {
+                    filePath = args[4];
+                }
+                if (args.length >= 6) {
+                    updateScriptName = args[5];
+                }
+
+                // Start app
+                System.out.println("Start initialize for schema " + dbConnection.getSchema());
+                if (!Application.app().initialize(dbConnection, filePath, updateScriptName)) {
+                    System.out.println("Failed to initialize");
+                } else {
+                    Application.app().createScripts();
+                    System.out.println("Scripts created!!!");
+                }
+
+            } catch (Exception e) {
+                System.err.println("Error: " + e);
+            }
         }
+        System.out.println("Closing up");
     }
 
     public static void print(String tag, String message) {
@@ -38,28 +65,5 @@ public class Main {
     public static void error(String tag, String message, Throwable t) {
         System.err.println(tag + ": " + message);
         t.printStackTrace();
-    }
-
-    private static void readArguments(String[] args) {
-        if (args.length > 0) {
-            for (String arg : args) {
-                try {
-                    System.out.println("Reading main input parameter: " + arg);
-                    String[] split = arg.split("=");
-                    String param = split[0];
-                    String value = split[1];
-
-                    switch (param) {
-                       // TODO
-                    }
-                } catch (Exception e) {
-                    System.err.println("Failed to read input params: " + e);
-                }
-            }
-        }
-    }
-
-    public static void closeApplication(int status) {
-        System.exit(status);
     }
 }

@@ -1,6 +1,5 @@
 package com.waldo.patrick.settings;
 
-import com.waldo.patrick.Application;
 import com.waldo.patrick.Main;
 import com.waldo.patrick.database.classes.TableType;
 import com.waldo.patrick.utils.ResourceManager;
@@ -26,23 +25,6 @@ public class AppSettings {
 
     public void initialize() throws IOException {
         resourceManager = new ResourceManager("settings/", "app.properties");
-    }
-
-
-    public String getDbAddress() {
-        return resourceManager.readString("db.Address");
-    }
-
-    public String getDbSchema() {
-        return resourceManager.readString("db.Schema");
-    }
-
-    public String getDbUser() {
-        return resourceManager.readString("db.User");
-    }
-
-    public String getDbPassword() {
-        return resourceManager.readString("db.Password");
     }
 
 

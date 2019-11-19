@@ -13,9 +13,9 @@ public class DbColumn extends BaseDbObject {
     private String defaultValue;
     private boolean isNullable;
     private boolean isPrimaryKey;
-    private String dataType;
+    private String dataType;//
     private int characterLength;
-    private int numericPrecision;
+    private int numericPrecision;//
 
     private DbTable table;
 
@@ -75,6 +75,21 @@ public class DbColumn extends BaseDbObject {
             defaultValue = "";
         }
         return defaultValue;
+    }
+
+    public String getRightTypeAmount() {
+        if (dataType.contains("int")) {
+            return "(" + getCorrectedPrecision() + ")";
+        }
+        if (getDataType().contains("char")) {
+            return "(" + getCharacterLength() + ")";
+        }
+
+        return "";
+    }
+
+    private int getCorrectedPrecision() {
+        return numericPrecision + 1;
     }
 
     public boolean isNullable() {

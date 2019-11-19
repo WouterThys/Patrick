@@ -1,23 +1,26 @@
 package com.waldo.patrick.database;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
 import com.waldo.patrick.Main;
 import com.waldo.patrick.database.classes.*;
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.EncodedResource;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.File;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DbManager {
 
     public static final String TAG = "DBMANAGER";
-    private static final String CONNECTION_STRING = "jdbc:mysql://%s/%s?zeroDateTimeBehavior=convertToNull&connectTimeout=20000&socketTimeout=30000";
+    private static final String CONNECTION_STRING = "jdbc:mysql://%s/%s?zeroDateTimeBehavior=convertToNull&connectTimeout=20000&socketTimeout=30000&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String sqlLoadTables = "SELECT * FROM information_schema.tables where table_schema='%s';";
     private static final String sqlLoadForeignKeys = "SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_SCHEMA = '%s';";
-    private static final String sqlLoadColumns = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s';";
+    private static final String sqlLoadColumns = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' ORDER BY ORDINAL_POSITION;";
 
 
     // Singleton
@@ -32,7 +35,8 @@ public class DbManager {
     }
 
     // Database
-    private BasicDataSource dataSource;
+    private MysqlDataSource dataSource;
+
     private String address;
     private String schema;
     private String userName;
@@ -44,6 +48,10 @@ public class DbManager {
     private List<DbForeignKey> dbForeignKeyList;
 
     // region Setup
+    public void initialize(DbConnection connection) throws SQLException {
+        initialize(connection.getAddress(), connection.getSchema(), connection.getUser(), connection.getPassword());
+    }
+
     public void initialize(String address, String schema, String userName, String password) throws SQLException {
         this.address = address;
         this.schema = schema;
@@ -56,17 +64,15 @@ public class DbManager {
         }
     }
 
-    public void close() throws SQLException {
-        if (dataSource != null) {
-            dataSource.close();
-        }
-    }
 
     private void setupDataSource() {
-        dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
+        dataSource = new MysqlDataSource();
+
+//        dataSource = new BasicDataSource();
+//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(String.format(CONNECTION_STRING, getAddress(), getSchema()));
-        dataSource.setUsername(getUserName());
+        dataSource.setUser(getUserName());
         dataSource.setPassword(getPassword());
     }
 
@@ -105,10 +111,11 @@ public class DbManager {
     }
 
 
-    public List<DbTable> getTables(TableType type) {
+    public List<DbTable> getTables(TableType... types) {
         List<DbTable> tables = new ArrayList<>();
+        List<TableType> typeList = Arrays.asList(types);
         for (DbTable table : getAllTables()) {
-            if (table.getTableType().equals(type)) {
+            if (typeList.contains(table.getTableType())) {
                 tables.add(table);
             }
         }
@@ -182,7 +189,6 @@ public class DbManager {
         dbForeignKeyList.addAll(getFromDb(sql, DbForeignKey::new));
     }
 
-
     private interface ICreateNew<T extends IDbObject> {
         T onCreateNew();
     }
@@ -200,6 +206,29 @@ public class DbManager {
             Main.error(TAG, "getFromDb", e);
         }
         return result;
+    }
+
+    public void execute(File file) {
+        try (Connection connection = dataSource.getConnection()) {
+            Resource script = new FileSystemResource(file);
+            ScriptUtils.executeSqlScript(connection, new EncodedResource(script));
+
+        } catch (SQLException e) {
+            Main.error(TAG, "execute", e);
+        }
+    }
+
+    public void execute(String script) {
+        try (Connection connection = dataSource.getConnection()) {
+
+            try(Statement stmt = connection.createStatement()) {
+                stmt.execute(script);
+            }
+
+
+        } catch (SQLException e) {
+            Main.error(TAG, "execute", e);
+        }
     }
 
     //endregion
@@ -253,6 +282,5 @@ public class DbManager {
         setupDataSource();
     }
     //endregion
-
 
 }

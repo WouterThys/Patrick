@@ -3,25 +3,22 @@ package com.waldo.patrick.database;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import com.waldo.patrick.Main;
 import com.waldo.patrick.database.classes.*;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.EncodedResource;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 
-import java.io.File;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class DbManager {
 
-    public static final String TAG = "DBMANAGER";
+    private static final String TAG = "DBMANAGER";
     private static final String CONNECTION_STRING = "jdbc:mysql://%s/%s?zeroDateTimeBehavior=convertToNull&connectTimeout=20000&socketTimeout=30000&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String sqlLoadTables = "SELECT * FROM information_schema.tables where table_schema='%s';";
     private static final String sqlLoadForeignKeys = "SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_SCHEMA = '%s';";
     private static final String sqlLoadColumns = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' ORDER BY ORDINAL_POSITION;";
-
 
     // Singleton
     private static final DbManager INSTANCE = new DbManager();
@@ -66,11 +63,8 @@ public class DbManager {
 
 
     private void setupDataSource() {
-
         dataSource = new MysqlDataSource();
 
-//        dataSource = new BasicDataSource();
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(String.format(CONNECTION_STRING, getAddress(), getSchema()));
         dataSource.setUser(getUserName());
         dataSource.setPassword(getPassword());
@@ -206,29 +200,6 @@ public class DbManager {
             Main.error(TAG, "getFromDb", e);
         }
         return result;
-    }
-
-    public void execute(File file) {
-        try (Connection connection = dataSource.getConnection()) {
-            Resource script = new FileSystemResource(file);
-            ScriptUtils.executeSqlScript(connection, new EncodedResource(script));
-
-        } catch (SQLException e) {
-            Main.error(TAG, "execute", e);
-        }
-    }
-
-    public void execute(String script) {
-        try (Connection connection = dataSource.getConnection()) {
-
-            try(Statement stmt = connection.createStatement()) {
-                stmt.execute(script);
-            }
-
-
-        } catch (SQLException e) {
-            Main.error(TAG, "execute", e);
-        }
     }
 
     //endregion

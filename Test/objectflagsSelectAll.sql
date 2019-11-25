@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM objectflags;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

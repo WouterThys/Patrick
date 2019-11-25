@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM cells;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

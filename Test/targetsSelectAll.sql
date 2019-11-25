@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM targets;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

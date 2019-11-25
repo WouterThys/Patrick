@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM usertypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

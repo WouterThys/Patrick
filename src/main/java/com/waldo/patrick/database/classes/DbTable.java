@@ -5,9 +5,7 @@ import com.waldo.patrick.database.DbManager;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class DbTable extends BaseDbObject {
 
@@ -64,6 +62,8 @@ public class DbTable extends BaseDbObject {
         if (tableType == null) {
             // Special tables
             if (getName().equalsIgnoreCase("updatescripts") ||
+                getName().equalsIgnoreCase("registrations") ||
+                getName().equalsIgnoreCase("logs") ||
                 getName().equalsIgnoreCase("settings")) {
                 tableType = TableType.Other;
             }

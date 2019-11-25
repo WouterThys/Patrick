@@ -1,22 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Patrick:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fa27b380-b6ec-45c7-95a6-024451a7b871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/deleteLinkStatement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/deleteStatement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/insertLinkStatement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/insertStatement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/selectStatement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/updateStatement.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/bomitemsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bomitemsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/bomitemsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bomitemsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/bomitemsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bomitemsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/bomitemsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bomitemsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/cellsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/cellsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/cellsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/cellsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/cellsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/cellsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/cellsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/cellsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/celltypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/celltypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/celltypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/celltypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/celltypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/celltypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/celltypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/celltypesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/intermissionsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/intermissionsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/intermissionsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/intermissionsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/intermissionsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/intermissionsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/intermissionsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/intermissionsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobinputtypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobinputtypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobinputtypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobinputtypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobinputtypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobinputtypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobinputtypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobinputtypesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/joboperationsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/joboperationsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/joboperationsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/joboperationsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/joboperationsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/joboperationsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/joboperationsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/joboperationsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/jobsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/jobsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/logsDelete.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/logsInsert.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/logsSelectAll.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/logsUpdate.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinetypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinetypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinetypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinetypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinetypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinetypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/machinetypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/machinetypesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/messagesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/messagesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/messagesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/messagesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/messagesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/messagesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/messagesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/messagesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumentsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumentsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumentsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumentsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumentsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumentsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumentsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumentsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumenttypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumenttypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumenttypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumenttypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumenttypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumenttypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectdocumenttypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectdocumenttypesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectflagsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectflagsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectflagsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectflagsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectflagsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectflagsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/objectflagsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/objectflagsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationtypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationtypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationtypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationtypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationtypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationtypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/operationtypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/operationtypesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/registrationsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/registrationsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/registrationsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/registrationsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/registrationsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/registrationsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/registrationsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/registrationsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/sourcesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/sourcesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/sourcesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/sourcesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/sourcesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/sourcesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/sourcesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/sourcesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targetsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targetsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targetsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targetsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targetsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targetsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targetsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targetsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targettypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targettypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targettypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targettypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targettypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targettypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/targettypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/targettypesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminalsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminalsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminalsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminalsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminalsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminalsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminalsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminalsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminaltypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminaltypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminaltypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminaltypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminaltypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminaltypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/terminaltypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/terminaltypesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/translationsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/translationsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/translationsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/translationsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/translationsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/translationsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/translationsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/translationsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/updatescript.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/updatescript.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userprofilesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userprofilesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userprofilesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userprofilesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userprofilesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userprofilesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userprofilesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userprofilesUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usersDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usersDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usersInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usersInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usersSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usersSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usersUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usersUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userterminalconfigsDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userterminalconfigsDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userterminalconfigsInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userterminalconfigsInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userterminalconfigsSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userterminalconfigsSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/userterminalconfigsUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/userterminalconfigsUpdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usertypesDelete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usertypesDelete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usertypesInsert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usertypesInsert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usertypesSelectAll.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usertypesSelectAll.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/usertypesUpdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/usertypesUpdate.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/settings/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/settings/app.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/utils/ResourceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/settings/app.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Patrick.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/DbManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/DbManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbColumn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbColumn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/settings/AppSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/settings/AppSettings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/settings/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/settings/app.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/settings/AppSettings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/utils/ResourceManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/settings/app.properties" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,11 +156,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="138" selection-end-column="8" />
+            <state relative-caret-position="638">
+              <caret line="166" column="29" selection-start-line="166" selection-start-column="29" selection-end-line="166" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,68 +168,42 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="79" column="40" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+            <state relative-caret-position="197">
+              <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3017#3018#0" expanded="true" />
+                <element signature="e#3047#3048#0" expanded="true" />
+                <element signature="e#3075#3076#0" expanded="true" />
+                <element signature="e#3102#3103#0" expanded="true" />
+                <element signature="e#3140#3141#0" expanded="true" />
+                <element signature="e#3176#3177#0" expanded="true" />
+                <element signature="e#3211#3212#0" expanded="true" />
+                <element signature="e#3244#3245#0" expanded="true" />
+                <element signature="e#3279#3280#0" expanded="true" />
+                <element signature="e#3312#3313#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/updateStatement.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="213" column="82" selection-start-line="213" selection-start-column="82" selection-end-line="213" selection-end-column="82" />
-              <folding>
-                <element signature="e#1244#1272#0" />
-                <element signature="e#1590#1802#0" />
-                <element signature="e#1808#2200#0" />
-                <element signature="e#2107#2194#1" />
-                <element signature="e#2672#3023#0" />
-                <element signature="e#2827#3017#0" />
-                <element signature="e#2958#3007#0" />
-                <element signature="e#3045#3209#0" />
-                <element signature="e#3135#3175#1" />
-                <element signature="e#3215#3365#0" />
-                <element signature="e#3289#3330#1" />
-                <element signature="e#3371#3541#0" />
-                <element signature="e#3457#3502#1" />
-                <element signature="e#3548#3901#0" />
-                <element signature="e#3753#3872#1" />
-                <element signature="e#3812#3862#1" />
-                <element signature="e#3907#4224#0" />
-                <element signature="e#4057#4194#1" />
-                <element signature="e#4132#4184#1" />
-                <element signature="e#4230#4570#0" />
-                <element signature="e#4401#4536#1" />
-                <element signature="e#4473#4526#1" />
-                <element signature="e#4895#5127#0" />
-                <element signature="e#4995#5100#1" />
-                <element signature="e#5049#5090#1" />
-                <element signature="e#5134#5247#0" />
-                <element signature="e#5253#5451#0" />
-                <element signature="e#5457#5660#0" />
-                <element signature="e#5666#5889#0" />
-                <element signature="e#5896#5978#0" />
-                <element signature="e#6628#6652#0" />
-                <element signature="e#6628#6782#0" />
-                <element signature="e#6715#6752#1" />
-                <element signature="e#6788#6893#0" />
-                <element signature="e#6899#7020#0" />
-                <element signature="e#6955#6991#1" />
-                <element signature="e#7026#7127#0" />
-                <element signature="e#7133#7262#0" />
-                <element signature="e#7193#7231#1" />
-                <element signature="e#7268#7377#0" />
-                <element signature="e#7383#7512#0" />
-                <element signature="e#7443#7481#1" />
-                <element signature="e#7518#7627#0" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/insertStatement.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -112,39 +211,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="90" selection-start-line="42" selection-start-column="90" selection-end-line="42" selection-end-column="90" />
+            <state relative-caret-position="765">
+              <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1821#1822#0" expanded="true" />
-                <element signature="e#1937#1938#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-67">
-              <caret line="14" column="86" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
-              <folding>
-                <element signature="e#320#321#0" expanded="true" />
-                <element signature="e#350#351#0" expanded="true" />
-                <element signature="e#396#397#0" expanded="true" />
-                <element signature="e#434#435#0" expanded="true" />
-                <element signature="e#467#468#0" expanded="true" />
-                <element signature="e#496#497#0" expanded="true" />
-                <element signature="e#540#541#0" expanded="true" />
-                <element signature="e#576#577#0" expanded="true" />
-                <element signature="e#607#608#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#674#675#0" expanded="true" />
-                <element signature="e#706#707#0" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-                <element signature="e#820#821#0" expanded="true" />
-                <element signature="e#860#861#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,20 +223,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="357">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -184,6 +242,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>ref</find>
+      <find>%s</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -198,18 +257,25 @@
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/TableType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbForeignKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/BaseDbObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/IScript.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/IStoredProcedure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/StoredProcedure.java" />
         <option value="$PROJECT_DIR$/src/main/resources/settings/app.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbConnection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/selectStatement.txt" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/updateStatement.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/deleteStatement.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/deleteLinkStatement.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/insertLinkStatement.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/insertStatement.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java" />
       </list>
     </option>
   </component>
@@ -220,10 +286,21 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="Patrick" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-10" />
-    <option name="width" value="1944" />
-    <option name="height" value="1104" />
+    <option name="width" value="2625" />
+    <option name="height" value="1410" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -284,7 +361,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="patrick" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
@@ -292,20 +370,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -314,7 +378,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574159742601" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574176931307" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gebruiker\Source\Repos\Patrick\src\main\resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -328,7 +400,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.waldo.patrick.Main" />
       <module name="Patrick" />
@@ -343,9 +415,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Patrick.jar" type="JarApplication" factoryName="JAR Application" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Patrick_jar/Patrick.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JAR Application.Patrick.jar" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.Patrick.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -372,9 +453,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2766" height="1126" extended-state="6" />
+    <frame x="-8" y="0" width="2100" height="1127" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22394678" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17009804" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -382,8 +463,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24647887" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24647887" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31991953" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -391,12 +472,12 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3279678" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32997987" />
-      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3279678" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.16186252" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -427,6 +508,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -440,18 +535,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.pom">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/utils/ResourceManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbForeignKey.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -485,26 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="524" column="52" selection-start-line="524" selection-start-column="52" selection-end-line="524" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3017#3018#0" expanded="true" />
-            <element signature="e#3047#3048#0" expanded="true" />
-            <element signature="e#3075#3076#0" expanded="true" />
-            <element signature="e#3102#3103#0" expanded="true" />
-            <element signature="e#3140#3141#0" expanded="true" />
-            <element signature="e#3176#3177#0" expanded="true" />
-            <element signature="e#3211#3212#0" expanded="true" />
-            <element signature="e#3244#3245#0" expanded="true" />
-            <element signature="e#3279#3280#0" expanded="true" />
-            <element signature="e#3312#3313#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -544,9 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/settings/app.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-67">
@@ -572,10 +632,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.18/mysql-connector-java-8.0.18.jar!/com/mysql/cj/jdbc/MysqlDataSource.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="240">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/settings/app.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/utils/ResourceManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="53" selection-start-line="53" selection-start-column="2" selection-end-line="56" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/linkcellsmachinesInsert.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/linkcellsmachinesDelete.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Config.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/resources.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/selectStatement.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/settings.properties" />
+    <entry file="file://$PROJECT_DIR$/Test/bomitemsSelectAll.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/deleteStatement.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/deleteLinkStatement.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/insertLinkStatement.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -584,101 +721,136 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.18/mysql-connector-java-8.0.18.jar!/com/mysql/cj/jdbc/MysqlDataSource.class">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/insertStatement.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+        <state relative-caret-position="136">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/updateStatement.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="90" selection-start-line="42" selection-start-column="90" selection-end-line="42" selection-end-column="90" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1821#1822#0" expanded="true" />
-            <element signature="e#1937#1938#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="213" column="82" selection-start-line="213" selection-start-column="82" selection-end-line="213" selection-end-column="82" />
-          <folding>
-            <element signature="e#1244#1272#0" />
-            <element signature="e#1590#1802#0" />
-            <element signature="e#1808#2200#0" />
-            <element signature="e#2107#2194#1" />
-            <element signature="e#2672#3023#0" />
-            <element signature="e#2827#3017#0" />
-            <element signature="e#2958#3007#0" />
-            <element signature="e#3045#3209#0" />
-            <element signature="e#3135#3175#1" />
-            <element signature="e#3215#3365#0" />
-            <element signature="e#3289#3330#1" />
-            <element signature="e#3371#3541#0" />
-            <element signature="e#3457#3502#1" />
-            <element signature="e#3548#3901#0" />
-            <element signature="e#3753#3872#1" />
-            <element signature="e#3812#3862#1" />
-            <element signature="e#3907#4224#0" />
-            <element signature="e#4057#4194#1" />
-            <element signature="e#4132#4184#1" />
-            <element signature="e#4230#4570#0" />
-            <element signature="e#4401#4536#1" />
-            <element signature="e#4473#4526#1" />
-            <element signature="e#4895#5127#0" />
-            <element signature="e#4995#5100#1" />
-            <element signature="e#5049#5090#1" />
-            <element signature="e#5134#5247#0" />
-            <element signature="e#5253#5451#0" />
-            <element signature="e#5457#5660#0" />
-            <element signature="e#5666#5889#0" />
-            <element signature="e#5896#5978#0" />
-            <element signature="e#6628#6652#0" />
-            <element signature="e#6628#6782#0" />
-            <element signature="e#6715#6752#1" />
-            <element signature="e#6788#6893#0" />
-            <element signature="e#6899#7020#0" />
-            <element signature="e#6955#6991#1" />
-            <element signature="e#7026#7127#0" />
-            <element signature="e#7133#7262#0" />
-            <element signature="e#7193#7231#1" />
-            <element signature="e#7268#7377#0" />
-            <element signature="e#7383#7512#0" />
-            <element signature="e#7443#7481#1" />
-            <element signature="e#7518#7627#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="79" column="40" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="138" selection-end-column="8" />
+        <state relative-caret-position="638">
+          <caret line="166" column="29" selection-start-line="166" selection-start-column="29" selection-end-line="166" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3017#3018#0" expanded="true" />
+            <element signature="e#3047#3048#0" expanded="true" />
+            <element signature="e#3075#3076#0" expanded="true" />
+            <element signature="e#3102#3103#0" expanded="true" />
+            <element signature="e#3140#3141#0" expanded="true" />
+            <element signature="e#3176#3177#0" expanded="true" />
+            <element signature="e#3211#3212#0" expanded="true" />
+            <element signature="e#3244#3245#0" expanded="true" />
+            <element signature="e#3279#3280#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>Patrick:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>ksoap2-android-assembly-2.6.4-jar-with-dependencies (3)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Patrick</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.google.protobuf:protobuf-java:3.6.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="$PROJECT_DIR$" />
+    <option value="clean install" />
   </component>
 </project>

@@ -81,8 +81,7 @@ BEGIN
 	SELECT * FROM bomitems;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `bomitemsUpdate`;
 
@@ -200,8 +199,7 @@ BEGIN
 	SELECT * FROM cells;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `cellsUpdate`;
 
@@ -308,8 +306,7 @@ BEGIN
 	SELECT * FROM celltypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `celltypesUpdate`;
 
@@ -423,8 +420,7 @@ BEGIN
 	SELECT * FROM intermissions;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `intermissionsUpdate`;
 
@@ -550,8 +546,7 @@ BEGIN
 	SELECT * FROM jobinputtypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `jobinputtypesUpdate`;
 
@@ -702,8 +697,7 @@ BEGIN
 	SELECT * FROM joboperations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `joboperationsUpdate`;
 
@@ -847,8 +841,7 @@ BEGIN
 	SELECT * FROM jobs;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `jobsUpdate`;
 
@@ -896,83 +889,631 @@ END$$
 
 DELIMITER ;
 USE `ww`;
-DROP procedure IF EXISTS `logsDelete`;
+DROP procedure IF EXISTS `linkcellsmachinesDelete`;
 
 DELIMITER $$
 USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsDelete`(
-  deleteId int(11)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsmachinesDelete`(
+	primaryKey int,
+	foreignKey int
 )
 BEGIN
- DELETE FROM logs WHERE id = deleteId;
+	DELETE FROM linkcellsmachines WHERE
+		cellId = primaryKey AND
+		machineId = foreignKey;
 END$$
 
 DELIMITER ;
 USE `ww`;
-DROP procedure IF EXISTS `logsInsert`;
+DROP procedure IF EXISTS `linkcellsmachinesInsert`;
 
 DELIMITER $$
 USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsInsert`(
-  tag varchar (45),
-  message blob ,
-  type int (11),
-  date datetime ,
-  OUT lid int
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
 )
 BEGIN
-  INSERT INTO logs(	
-	tag,
-	message,
-	type,
-	date,
-	lastModified)
-  VALUES(	
-	tag,
-	message,
-	type,
-	date,
-	now());
-  SET lid = last_insert_id();
+	INSERT INTO linkcellsmachines(
+		cellId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
 END$$
 
 DELIMITER ;
 USE `ww`;
-DROP procedure IF EXISTS `logsSelectAll`;
+DROP procedure IF EXISTS `linkcellsoperationsDelete`;
 
 DELIMITER $$
 USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsSelectAll`()
-BEGIN
-
-	SELECT * FROM logs;
-
-END$$
-
-DELIMITER ; 
-USE `ww`;
-DROP procedure IF EXISTS `logsUpdate`;
-
-DELIMITER $$
-USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsUpdate`(
-  tag varchar (45),
-  message blob ,
-  type int (11),
-  date datetime ,
-  updateId int
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsoperationsDelete`(
+	primaryKey int,
+	foreignKey int
 )
 BEGIN
-  UPDATE
-	logs
-  SET	
-	tag = tag,
-	message = message,
-	type = type,
-	date = date,
-	lastModified = current_timestamp()
-  WHERE
-	id = updateId;
+	DELETE FROM linkcellsoperations WHERE
+		cellId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkcellsoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkcellsoperations(
+		cellId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkjoboperationsjobinputtypesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkjoboperationsjobinputtypesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkjoboperationsjobinputtypes WHERE
+		jobId = primaryKey AND
+		jobOperationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkjoboperationsjobinputtypesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkjoboperationsjobinputtypesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkjoboperationsjobinputtypes(
+		jobId,
+		jobOperationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkmachinesoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkmachinesoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkmachinesoperations WHERE
+		machineId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkmachinesoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkmachinesoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkmachinesoperations(
+		machineId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkoperationsjobinputtypesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkoperationsjobinputtypesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkoperationsjobinputtypes WHERE
+		operationId = primaryKey AND
+		jobInputTypeId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkoperationsjobinputtypesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkoperationsjobinputtypesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkoperationsjobinputtypes(
+		operationId,
+		jobInputTypeId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkproductioncellsoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkproductioncellsoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkproductioncellsoperations WHERE
+		productionCellId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkproductioncellsoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkproductioncellsoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkproductioncellsoperations(
+		productionCellId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkprofilesoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkprofilesoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkprofilesoperations WHERE
+		profileId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkprofilesoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkprofilesoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkprofilesoperations(
+		profileId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalscellsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalscellsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkterminalscells WHERE
+		terminalId = primaryKey AND
+		cellId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalscellsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalscellsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkterminalscells(
+		terminalId,
+		cellId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalsmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalsmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkterminalsmachines WHERE
+		terminalId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalsmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalsmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkterminalsmachines(
+		terminalId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserscellsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserscellsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkuserscells WHERE
+		userId = primaryKey AND
+		cellId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserscellsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserscellsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkuserscells(
+		userId,
+		cellId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusersmachines WHERE
+		userId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusersmachines(
+		userId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusersoperations WHERE
+		userId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusersoperations(
+		userId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersusertypesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersusertypesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusersusertypes WHERE
+		userId = primaryKey AND
+		userTypeId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersusertypesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersusertypesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusersusertypes(
+		userId,
+		userTypeId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkuserterminalconfigsmachines WHERE
+		configId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkuserterminalconfigsmachines(
+		configId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkuserterminalconfigsoperations WHERE
+		configId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkuserterminalconfigsoperations(
+		configId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusertypesmachines WHERE
+		userTypeId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusertypesmachines(
+		userTypeId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusertypesoperations WHERE
+		userTypeId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusertypesoperations(
+		userTypeId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
 END$$
 
 DELIMITER ;
@@ -1053,8 +1594,7 @@ BEGIN
 	SELECT * FROM machines;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `machinesUpdate`;
 
@@ -1165,8 +1705,7 @@ BEGIN
 	SELECT * FROM machinetypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `machinetypesUpdate`;
 
@@ -1292,8 +1831,7 @@ BEGIN
 	SELECT * FROM messages;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `messagesUpdate`;
 
@@ -1412,8 +1950,7 @@ BEGIN
 	SELECT * FROM objectdocuments;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `objectdocumentsUpdate`;
 
@@ -1518,8 +2055,7 @@ BEGIN
 	SELECT * FROM objectdocumenttypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `objectdocumenttypesUpdate`;
 
@@ -1612,8 +2148,7 @@ BEGIN
 	SELECT * FROM objectflags;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `objectflagsUpdate`;
 
@@ -1764,8 +2299,7 @@ BEGIN
 	SELECT * FROM operations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `operationsUpdate`;
 
@@ -1906,8 +2440,7 @@ BEGIN
 	SELECT * FROM operationtypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `operationtypesUpdate`;
 
@@ -2036,8 +2569,7 @@ BEGIN
 	SELECT * FROM registrations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `registrationsUpdate`;
 
@@ -2152,8 +2684,7 @@ BEGIN
 	SELECT * FROM sources;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `sourcesUpdate`;
 
@@ -2263,8 +2794,7 @@ BEGIN
 	SELECT * FROM targets;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `targetsUpdate`;
 
@@ -2375,8 +2905,7 @@ BEGIN
 	SELECT * FROM targettypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `targettypesUpdate`;
 
@@ -2502,8 +3031,7 @@ BEGIN
 	SELECT * FROM terminals;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `terminalsUpdate`;
 
@@ -2622,8 +3150,7 @@ BEGIN
 	SELECT * FROM terminaltypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `terminaltypesUpdate`;
 
@@ -2722,8 +3249,7 @@ BEGIN
 	SELECT * FROM translations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `translationsUpdate`;
 
@@ -2839,8 +3365,7 @@ BEGIN
 	SELECT * FROM bomitems;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `bomitemsUpdate`;
 
@@ -2958,8 +3483,7 @@ BEGIN
 	SELECT * FROM cells;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `cellsUpdate`;
 
@@ -3066,8 +3590,7 @@ BEGIN
 	SELECT * FROM celltypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `celltypesUpdate`;
 
@@ -3181,8 +3704,7 @@ BEGIN
 	SELECT * FROM intermissions;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `intermissionsUpdate`;
 
@@ -3308,8 +3830,7 @@ BEGIN
 	SELECT * FROM jobinputtypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `jobinputtypesUpdate`;
 
@@ -3460,8 +3981,7 @@ BEGIN
 	SELECT * FROM joboperations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `joboperationsUpdate`;
 
@@ -3605,8 +4125,7 @@ BEGIN
 	SELECT * FROM jobs;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `jobsUpdate`;
 
@@ -3654,83 +4173,631 @@ END$$
 
 DELIMITER ;
 USE `ww`;
-DROP procedure IF EXISTS `logsDelete`;
+DROP procedure IF EXISTS `linkcellsmachinesDelete`;
 
 DELIMITER $$
 USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsDelete`(
-  deleteId int(11)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsmachinesDelete`(
+	primaryKey int,
+	foreignKey int
 )
 BEGIN
- DELETE FROM logs WHERE id = deleteId;
+	DELETE FROM linkcellsmachines WHERE
+		cellId = primaryKey AND
+		machineId = foreignKey;
 END$$
 
 DELIMITER ;
 USE `ww`;
-DROP procedure IF EXISTS `logsInsert`;
+DROP procedure IF EXISTS `linkcellsmachinesInsert`;
 
 DELIMITER $$
 USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsInsert`(
-  tag varchar (45),
-  message blob ,
-  type int (11),
-  date datetime ,
-  OUT lid int
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
 )
 BEGIN
-  INSERT INTO logs(	
-	tag,
-	message,
-	type,
-	date,
-	lastModified)
-  VALUES(	
-	tag,
-	message,
-	type,
-	date,
-	now());
-  SET lid = last_insert_id();
+	INSERT INTO linkcellsmachines(
+		cellId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
 END$$
 
 DELIMITER ;
 USE `ww`;
-DROP procedure IF EXISTS `logsSelectAll`;
+DROP procedure IF EXISTS `linkcellsoperationsDelete`;
 
 DELIMITER $$
 USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsSelectAll`()
-BEGIN
-
-	SELECT * FROM logs;
-
-END$$
-
-DELIMITER ; 
-USE `ww`;
-DROP procedure IF EXISTS `logsUpdate`;
-
-DELIMITER $$
-USE `ww`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `logsUpdate`(
-  tag varchar (45),
-  message blob ,
-  type int (11),
-  date datetime ,
-  updateId int
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsoperationsDelete`(
+	primaryKey int,
+	foreignKey int
 )
 BEGIN
-  UPDATE
-	logs
-  SET	
-	tag = tag,
-	message = message,
-	type = type,
-	date = date,
-	lastModified = current_timestamp()
-  WHERE
-	id = updateId;
+	DELETE FROM linkcellsoperations WHERE
+		cellId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkcellsoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkcellsoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkcellsoperations(
+		cellId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkjoboperationsjobinputtypesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkjoboperationsjobinputtypesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkjoboperationsjobinputtypes WHERE
+		jobId = primaryKey AND
+		jobOperationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkjoboperationsjobinputtypesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkjoboperationsjobinputtypesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkjoboperationsjobinputtypes(
+		jobId,
+		jobOperationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkmachinesoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkmachinesoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkmachinesoperations WHERE
+		machineId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkmachinesoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkmachinesoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkmachinesoperations(
+		machineId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkoperationsjobinputtypesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkoperationsjobinputtypesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkoperationsjobinputtypes WHERE
+		operationId = primaryKey AND
+		jobInputTypeId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkoperationsjobinputtypesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkoperationsjobinputtypesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkoperationsjobinputtypes(
+		operationId,
+		jobInputTypeId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkproductioncellsoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkproductioncellsoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkproductioncellsoperations WHERE
+		productionCellId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkproductioncellsoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkproductioncellsoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkproductioncellsoperations(
+		productionCellId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkprofilesoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkprofilesoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkprofilesoperations WHERE
+		profileId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkprofilesoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkprofilesoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkprofilesoperations(
+		profileId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalscellsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalscellsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkterminalscells WHERE
+		terminalId = primaryKey AND
+		cellId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalscellsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalscellsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkterminalscells(
+		terminalId,
+		cellId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalsmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalsmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkterminalsmachines WHERE
+		terminalId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkterminalsmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkterminalsmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkterminalsmachines(
+		terminalId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserscellsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserscellsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkuserscells WHERE
+		userId = primaryKey AND
+		cellId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserscellsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserscellsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkuserscells(
+		userId,
+		cellId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusersmachines WHERE
+		userId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusersmachines(
+		userId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusersoperations WHERE
+		userId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusersoperations(
+		userId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersusertypesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersusertypesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusersusertypes WHERE
+		userId = primaryKey AND
+		userTypeId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusersusertypesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusersusertypesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusersusertypes(
+		userId,
+		userTypeId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkuserterminalconfigsmachines WHERE
+		configId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkuserterminalconfigsmachines(
+		configId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkuserterminalconfigsoperations WHERE
+		configId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkuserterminalconfigsoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkuserterminalconfigsoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkuserterminalconfigsoperations(
+		configId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesmachinesDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesmachinesDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusertypesmachines WHERE
+		userTypeId = primaryKey AND
+		machineId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesmachinesInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesmachinesInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusertypesmachines(
+		userTypeId,
+		machineId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesoperationsDelete`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesoperationsDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM linkusertypesoperations WHERE
+		userTypeId = primaryKey AND
+		operationId = foreignKey;
+END$$
+
+DELIMITER ;
+USE `ww`;
+DROP procedure IF EXISTS `linkusertypesoperationsInsert`;
+
+DELIMITER $$
+USE `ww`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `linkusertypesoperationsInsert`(
+	primaryKey int(11),
+	foreignKey int(11),
+	OUT lid int
+)
+BEGIN
+	INSERT INTO linkusertypesoperations(
+		userTypeId,
+		operationId)
+	VALUES (
+		primaryKey,
+		foreignKey);
+	SET lid = last_insert_id();
 END$$
 
 DELIMITER ;
@@ -3811,8 +4878,7 @@ BEGIN
 	SELECT * FROM machines;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `machinesUpdate`;
 
@@ -3923,8 +4989,7 @@ BEGIN
 	SELECT * FROM machinetypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `machinetypesUpdate`;
 
@@ -4050,8 +5115,7 @@ BEGIN
 	SELECT * FROM messages;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `messagesUpdate`;
 
@@ -4170,8 +5234,7 @@ BEGIN
 	SELECT * FROM objectdocuments;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `objectdocumentsUpdate`;
 
@@ -4276,8 +5339,7 @@ BEGIN
 	SELECT * FROM objectdocumenttypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `objectdocumenttypesUpdate`;
 
@@ -4370,8 +5432,7 @@ BEGIN
 	SELECT * FROM objectflags;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `objectflagsUpdate`;
 
@@ -4522,8 +5583,7 @@ BEGIN
 	SELECT * FROM operations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `operationsUpdate`;
 
@@ -4664,8 +5724,7 @@ BEGIN
 	SELECT * FROM operationtypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `operationtypesUpdate`;
 
@@ -4794,8 +5853,7 @@ BEGIN
 	SELECT * FROM registrations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `registrationsUpdate`;
 
@@ -4910,8 +5968,7 @@ BEGIN
 	SELECT * FROM sources;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `sourcesUpdate`;
 
@@ -5021,8 +6078,7 @@ BEGIN
 	SELECT * FROM targets;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `targetsUpdate`;
 
@@ -5133,8 +6189,7 @@ BEGIN
 	SELECT * FROM targettypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `targettypesUpdate`;
 
@@ -5260,8 +6315,7 @@ BEGIN
 	SELECT * FROM terminals;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `terminalsUpdate`;
 
@@ -5380,8 +6434,7 @@ BEGIN
 	SELECT * FROM terminaltypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `terminaltypesUpdate`;
 
@@ -5480,8 +6533,7 @@ BEGIN
 	SELECT * FROM translations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `translationsUpdate`;
 
@@ -5648,8 +6700,7 @@ BEGIN
 	SELECT * FROM userprofiles;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `userprofilesUpdate`;
 
@@ -5834,8 +6885,7 @@ BEGIN
 	SELECT * FROM users;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `usersUpdate`;
 
@@ -5967,8 +7017,7 @@ BEGIN
 	SELECT * FROM userterminalconfigs;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `userterminalconfigsUpdate`;
 
@@ -6078,8 +7127,7 @@ BEGIN
 	SELECT * FROM usertypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;
 USE `ww`;
 DROP procedure IF EXISTS `usertypesUpdate`;
 

@@ -1,7 +1,6 @@
 package com.waldo.patrick.database.classes;
 
 import com.waldo.patrick.database.DbManager;
-import com.waldo.patrick.settings.AppSettings;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,10 +51,10 @@ public class DbColumn extends BaseDbObject {
         return table;
     }
 
-    public boolean isDefaultColumn() {
-        DbTable table = getTable();
-        return AppSettings.as().isDefaultColumn(table.getTableType(), getName());
-    }
+//    public boolean isDefaultColumn() {
+//        DbTable table = getTable();
+//        return AppSettings.as().isDefaultColumn(table.getTableType(), getName());
+//    }
 
     //region Getters/Setters
 

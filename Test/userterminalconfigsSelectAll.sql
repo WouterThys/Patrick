@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM userterminalconfigs;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

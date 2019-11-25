@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM operations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

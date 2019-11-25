@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM machines;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

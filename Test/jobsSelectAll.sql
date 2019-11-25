@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM jobs;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

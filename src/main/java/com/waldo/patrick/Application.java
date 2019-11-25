@@ -6,11 +6,8 @@ import com.waldo.patrick.database.classes.DbConnection;
 import com.waldo.patrick.database.classes.DbTable;
 import com.waldo.patrick.database.classes.TableType;
 import com.waldo.patrick.scripts.StoredProcedure;
-import com.waldo.patrick.settings.AppSettings;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -21,87 +18,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Application {
+class Application {
 
-    public static final String TAG = "Application";
+    private static final String TAG = "Application";
 
-    private static final String selectStatement = "USE `%s`;\n" +
-            "DROP procedure IF EXISTS `%sSelectAll`;\n" +
-            "\n" +
-            "DELIMITER $$\n" +
-            "USE `%s`$$\n" +
-            "CREATE DEFINER=`root`@`localhost` PROCEDURE `%sSelectAll`()\n" +
-            "BEGIN\n" +
-            "\n" +
-            "\tSELECT * FROM %s;\n" +
-            "\n" +
-            "END$$" +
-            "\n" +
-            "\n" +
-            "DELIMITER ; ";
-
-
-    private static final String updateStatement = "USE `%s`;\n" +
-            "DROP procedure IF EXISTS `%sUpdate`;\n" +
-            "\n" +
-            "DELIMITER $$\n" +
-            "USE `%s`$$\n" +
-            "CREATE DEFINER=`root`@`localhost` PROCEDURE `%sUpdate`(" +
-            "%s\n" +
-            "  " + "updateId int\n" +
-            ")\n" +
-            "BEGIN\n" +
-            "  UPDATE\n" +
-            "\t%s\n" +
-            "  SET" +
-            "\t%s\n" +
-            "\tlastModified = current_timestamp()\n" +
-            "  WHERE\n" +
-            "\tid = updateId;\n" +
-            "END$$\n" +
-            "\n" +
-            "DELIMITER ;";
-
-    private static final String insertStatement = "USE `%s`;\n" +
-            "DROP procedure IF EXISTS `%sInsert`;\n" +
-            "\n" +
-            "DELIMITER $$\n" +
-            "USE `%s`$$\n" +
-            "CREATE DEFINER=`root`@`localhost` PROCEDURE `%sInsert`(" +
-            "%s\n" +
-            "  " + "OUT lid int\n" +
-            ")\n" +
-            "BEGIN\n" +
-            "  INSERT INTO %s(" +
-            "\t%s\n" +
-            "\tlastModified)\n" +
-            "  VALUES(" +
-            "\t%s\n" +
-            "\tnow());\n" +
-            "  SET lid = last_insert_id();\n" +
-            "END$$\n" +
-            "\n" +
-            "DELIMITER ;";
-
-    private static final String deleteStatement = "USE `%s`;\n" +
-            "DROP procedure IF EXISTS `%sDelete`;\n" +
-            "\n" +
-            "DELIMITER $$\n" +
-            "USE `%s`$$\n" +
-            "CREATE DEFINER=`root`@`localhost` PROCEDURE `%sDelete`(\n" +
-            "  deleteId int(11)\n" +
-            ")\n" +
-            "BEGIN\n" +
-            " DELETE FROM %s WHERE id = deleteId;\n" +
-            "END$$\n" +
-            "\n" +
-            "DELIMITER ;";
+    private String selectStatement;
+    private String updateStatement;
+    private String insertStatement;
+    private String deleteStatement;
+    private String deleteLinkStatement;
+    private String insertLinkStatement;
 
     // Singleton
     private static final Application INSTANCE = new Application();
+
     static Application app() {
         return INSTANCE;
     }
+
     private Application() {
     }
 
@@ -112,12 +46,11 @@ public class Application {
         this.filePath = filePath;
         this.updateScriptName = updateScriptName;
 
-        Main.print(TAG, "Initialize settings");
+        Main.print(TAG, "Reading config");
         try {
-            AppSettings.as().initialize();
+            readConfigData();
         } catch (IOException e) {
-            Main.error(TAG, "Initialize settings", e);
-            return false;
+            Main.error(TAG, "Reading config", e);
         }
 
         Main.print(TAG, "Initialize database");
@@ -131,12 +64,34 @@ public class Application {
         return true;
     }
 
-    public void createScripts() {
+    private void readConfigData() throws IOException {
+        selectStatement = readFileAsString("selectStatement.txt");
+        updateStatement = readFileAsString("updateStatement.txt");
+        insertStatement = readFileAsString("insertStatement.txt");
+        deleteStatement = readFileAsString("deleteStatement.txt");
+        deleteLinkStatement = readFileAsString("deleteLinkStatement.txt");
+        insertLinkStatement = readFileAsString("insertLinkStatement.txt");
+    }
 
-        createSelectAllScripts(); // Voor Data en Type
-        createUpdateScripts(); // Voor Data, Type
-        createInsertScripts(); // Voor Data, Type, Link
-        createDeleteScripts(); // Voor Data, Type, Link
+    private String readFileAsString(String fileName) throws IOException {
+        String result = "";
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream(fileName)) {
+            if (in != null) {
+                byte[] targetArray = new byte[in.available()];
+                if (in.read(targetArray) > 0) {
+                    result = new String(targetArray);
+                }
+            }
+        }
+        return result;
+    }
+
+    void createScripts() {
+
+        createSelectAllScripts();
+        createUpdateScripts();
+        createInsertScripts();
+        createDeleteScripts();
 
         createUpdateScript(updateScriptName);
     }
@@ -153,6 +108,7 @@ public class Application {
         }
 
         createFiles(selectAllProcedures);
+        Main.print(TAG, "Select statements created");
     }
 
     private void createUpdateScripts() {
@@ -190,6 +146,7 @@ public class Application {
 
         }
         createFiles(updateProcedures);
+        Main.print(TAG, "Update statements created");
     }
 
 
@@ -227,26 +184,62 @@ public class Application {
             insertProcedure.setContent(content);
             insertProcedures.add(insertProcedure);
         }
+
+        // Link
+        for (DbTable table : DbManager.db().getTables(TableType.Link)) {
+            StoredProcedure insertProcedure = new StoredProcedure();
+            insertProcedure.setName(table.getName() + "Insert");
+
+            String content = String.format(insertLinkStatement,
+                    table.getSchema(),
+                    table.getName(),
+                    table.getSchema(),
+                    table.getName(),
+                    table.getName(),
+                    table.getColumns().get(1).getName(), // Not very clean..
+                    table.getColumns().get(2).getName());
+
+            insertProcedure.setContent(content);
+            insertProcedures.add(insertProcedure);
+        }
+
         createFiles(insertProcedures);
+        Main.print(TAG, "Insert statements created");
     }
 
     private void createDeleteScripts() {
         // Data and Type
         ArrayList<StoredProcedure> deleteProcedures = new ArrayList<>();
         for (DbTable table : DbManager.db().getTables(TableType.Data, TableType.Type)) {
-            StoredProcedure selectAllProcedure = new StoredProcedure();
-            selectAllProcedure.setName(table.getName() + "Delete");
+            StoredProcedure deleteProcedure = new StoredProcedure();
+            deleteProcedure.setName(table.getName() + "Delete");
 
             String content = String.format(deleteStatement, table.getSchema(), table.getName(), table.getSchema(), table.getName(), table.getName());
 
-            selectAllProcedure.setContent(content);
-            deleteProcedures.add(selectAllProcedure);
+            deleteProcedure.setContent(content);
+            deleteProcedures.add(deleteProcedure);
         }
 
         // Link
+        for (DbTable table : DbManager.db().getTables(TableType.Link)) {
+            StoredProcedure deleteProcedure = new StoredProcedure();
+            deleteProcedure.setName(table.getName() + "Delete");
 
+            String content = String.format(deleteLinkStatement,
+                    table.getSchema(),
+                    table.getName(),
+                    table.getSchema(),
+                    table.getName(),
+                    table.getName(),
+                    table.getColumns().get(1).getName(),
+                    table.getColumns().get(2).getName());
+
+            deleteProcedure.setContent(content);
+            deleteProcedures.add(deleteProcedure);
+        }
 
         createFiles(deleteProcedures);
+        Main.print(TAG, "Delete statements created");
     }
 
 
@@ -274,7 +267,7 @@ public class Application {
         if (filePath != null && !filePath.isEmpty()) {
             File directory = new File(filePath);
             if (directory.exists()) {
-                File[] files = directory.listFiles();
+                File[] files = directory.listFiles((dir, fileName) -> fileName.toLowerCase().endsWith(".sql"));
                 if (files != null) {
 
                     try {
@@ -298,21 +291,18 @@ public class Application {
                             Files.write(output, lines, charset, StandardOpenOption.CREATE,
                                     StandardOpenOption.APPEND);
                         }
+                        Main.print(TAG, "Update script created at " + filePath);
                     } catch (Exception e) {
                         Main.error(TAG, "Create update scripts", e);
                     }
-
-
-//                    for (File f : files) {
-//                        try {
-//                            Main.print(TAG, "Executing " + f.getName());
-//                            DbManager.db().execute(f);
-//                        } catch (Exception e) {
-//                            Main.error(TAG, "Executing " + f.getName() + " failed", e);
-//                        }
-//                    }
+                } else {
+                    Main.error(TAG, "No update script created because " + filePath + " contains no sql files");
                 }
+            } else {
+                Main.error(TAG, "No update script created because " + filePath + " does not exist");
             }
+        } else {
+            Main.error(TAG, "No update script created because file path is empty");
         }
     }
 }

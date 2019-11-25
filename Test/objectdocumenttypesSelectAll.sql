@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM objectdocumenttypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

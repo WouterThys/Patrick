@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM terminaltypes;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

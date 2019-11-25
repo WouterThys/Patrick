@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM translations;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

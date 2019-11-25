@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM messages;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

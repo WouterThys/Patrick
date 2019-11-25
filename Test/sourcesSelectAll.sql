@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM sources;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

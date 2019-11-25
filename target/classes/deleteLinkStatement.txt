@@ -1,0 +1,16 @@
+USE `%s`;
+DROP procedure IF EXISTS `%sDelete`;
+
+DELIMITER $$
+USE `%s`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `%sDelete`(
+	primaryKey int,
+	foreignKey int
+)
+BEGIN
+	DELETE FROM %s WHERE
+		%s = primaryKey AND
+		%s = foreignKey;
+END$$
+
+DELIMITER ;

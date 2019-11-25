@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM intermissions;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

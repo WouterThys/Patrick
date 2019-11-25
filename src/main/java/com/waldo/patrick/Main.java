@@ -4,12 +4,10 @@ import com.waldo.patrick.database.classes.DbConnection;
 
 import java.io.File;
 
+
 public class Main {
 
-//    db.Address=192.168.0.248
-//    db.Schema=ww
-//    db.User=waldo
-//    db.Password=waldow
+    private static final String TAG = "MAIN";
 
     public static void main(String[] args) {
         // Start up
@@ -39,16 +37,15 @@ public class Main {
                 }
 
                 // Start app
-                System.out.println("Start initialize for schema " + dbConnection.getSchema());
+                print(TAG, "Start initialize for schema " + dbConnection.getSchema());
                 if (!Application.app().initialize(dbConnection, filePath, updateScriptName)) {
-                    System.out.println("Failed to initialize");
+                    error(TAG, "Failed to initialize");
                 } else {
                     Application.app().createScripts();
-                    System.out.println("Scripts created!!!");
                 }
 
             } catch (Exception e) {
-                System.err.println("Error: " + e);
+                error(TAG, "Error: ", e);
             }
         }
         System.out.println("Closing up");

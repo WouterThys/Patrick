@@ -9,5 +9,4 @@ BEGIN
 	SELECT * FROM userprofiles;
 
 END$$
-
-DELIMITER ; 
+DELIMITER ;

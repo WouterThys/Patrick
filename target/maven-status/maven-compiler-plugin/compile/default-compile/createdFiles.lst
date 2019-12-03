@@ -1,3 +1,4 @@
+com\waldo\patrick\database\classes\UpdateScript.class
 com\waldo\patrick\database\classes\DbConnection.class
 com\waldo\patrick\scripts\IStoredProcedure.class
 com\waldo\patrick\database\classes\BaseDbObject.class

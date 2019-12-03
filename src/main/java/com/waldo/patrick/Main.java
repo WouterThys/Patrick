@@ -8,6 +8,18 @@ import java.io.File;
 public class Main {
 
     private static final String TAG = "MAIN";
+    private static final String MODE_UPDATE_SCRIPTS = "UPDATESCRIPTS";
+    private static final String MODE_PROCEDURES = "PROCEDURES";
+
+    private static final int ARG_MODE = 0;
+    private static final int ARG_DB_SERVER = 1;
+    private static final int ARG_DB_SCHEMA = 2;
+    private static final int ARG_DB_USER = 3;
+    private static final int ARG_DB_PASSWORD = 4;
+    private static final int ARG_FROM_ID = 5;
+    private static final int ARG_TARGET_DIR = 6;
+    private static final int ARG_TARGET_PROCEDURES = 7;
+    private static final int ARG_TARGET_UPDATE_SCRIPTS = 8;
 
     public static void main(String[] args) {
         // Start up
@@ -15,33 +27,34 @@ public class Main {
         System.out.println("Start up @" + startUpPath);
 
         // Check
-        if (args.length < 4 || args[0] == null) {
+        if (args.length < 5 || args[0] == null) {
             System.out.println("Not enough arguments!");
         } else {
 
             DbConnection dbConnection;
-            String filePath = ".";
-            String updateScriptName = "updatescript.sql";
-            try {
-                dbConnection = new DbConnection(
-                        args[0],
-                        args[1],
-                        args[2],
-                        args[3]);
 
-                if (args.length >= 5) {
-                    filePath = args[4];
-                }
-                if (args.length >= 6) {
-                    updateScriptName = args[5];
-                }
+            try {
+                String mode = args[ARG_MODE];
+                dbConnection = new DbConnection(
+                        args[ARG_DB_SERVER],
+                        args[ARG_DB_SCHEMA],
+                        args[ARG_DB_USER],
+                        args[ARG_DB_PASSWORD]);
 
                 // Start app
                 print(TAG, "Start initialize for schema " + dbConnection.getSchema());
-                if (!Application.app().initialize(dbConnection, filePath, updateScriptName)) {
+                if (!Application.app().initialize(dbConnection)) {
                     error(TAG, "Failed to initialize");
                 } else {
-                    Application.app().createScripts();
+
+                    switch (mode) {
+                        case MODE_PROCEDURES:
+                            Application.app().createStoredProcedures(args[ARG_TARGET_DIR], args[ARG_TARGET_PROCEDURES]);
+                            break;
+                        case MODE_UPDATE_SCRIPTS:
+                            Application.app().createTableUpdateScripts(Long.valueOf(args[ARG_FROM_ID]), args[ARG_TARGET_UPDATE_SCRIPTS]);
+                            break;
+                    }
                 }
 
             } catch (Exception e) {

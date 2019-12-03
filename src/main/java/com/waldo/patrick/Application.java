@@ -1,10 +1,7 @@
 package com.waldo.patrick;
 
 import com.waldo.patrick.database.DbManager;
-import com.waldo.patrick.database.classes.DbColumn;
-import com.waldo.patrick.database.classes.DbConnection;
-import com.waldo.patrick.database.classes.DbTable;
-import com.waldo.patrick.database.classes.TableType;
+import com.waldo.patrick.database.classes.*;
 import com.waldo.patrick.scripts.StoredProcedure;
 
 import java.io.*;
@@ -20,7 +17,7 @@ import java.util.List;
 
 class Application {
 
-    private static final String TAG = "Application";
+    private static final String TAG = "Patrick";
 
     private String selectStatement;
     private String updateStatement;
@@ -28,6 +25,7 @@ class Application {
     private String deleteStatement;
     private String deleteLinkStatement;
     private String insertLinkStatement;
+    private String insertUpdateScriptStatement;
 
     // Singleton
     private static final Application INSTANCE = new Application();
@@ -39,12 +37,7 @@ class Application {
     private Application() {
     }
 
-    private String filePath;
-    private String updateScriptName;
-
-    boolean initialize(DbConnection dbConnection, String filePath, String updateScriptName) {
-        this.filePath = filePath;
-        this.updateScriptName = updateScriptName;
+    boolean initialize(DbConnection dbConnection) {
 
         Main.print(TAG, "Reading config");
         try {
@@ -71,6 +64,7 @@ class Application {
         deleteStatement = readFileAsString("deleteStatement.txt");
         deleteLinkStatement = readFileAsString("deleteLinkStatement.txt");
         insertLinkStatement = readFileAsString("insertLinkStatement.txt");
+        insertUpdateScriptStatement = readFileAsString("insertUpdateScriptStatement.txt");
     }
 
     private String readFileAsString(String fileName) throws IOException {
@@ -86,17 +80,18 @@ class Application {
         return result;
     }
 
-    void createScripts() {
+    // region Stored Procedures
+    void createStoredProcedures(String filePath, String updateScriptName) {
 
-        createSelectAllScripts();
-        createUpdateScripts();
-        createInsertScripts();
-        createDeleteScripts();
+        createSelectAllScripts(filePath);
+        createUpdateScripts(filePath);
+        createInsertScripts(filePath);
+        createDeleteScripts(filePath);
 
-        createUpdateScript(updateScriptName);
+        createUpdateScript(filePath, updateScriptName);
     }
 
-    private void createSelectAllScripts() {
+    private void createSelectAllScripts(String filePath) {
         ArrayList<StoredProcedure> selectAllProcedures = new ArrayList<>();
         for (DbTable table : DbManager.db().getTables(TableType.Data, TableType.Type)) {
             StoredProcedure selectAllProcedure = new StoredProcedure();
@@ -107,11 +102,11 @@ class Application {
             selectAllProcedures.add(selectAllProcedure);
         }
 
-        createFiles(selectAllProcedures);
+        createFiles(filePath, selectAllProcedures);
         Main.print(TAG, "Select statements created");
     }
 
-    private void createUpdateScripts() {
+    private void createUpdateScripts(String filePath) {
         ArrayList<StoredProcedure> updateProcedures = new ArrayList<>();
 
         for (DbTable table : DbManager.db().getTables(TableType.Data, TableType.Type)) {
@@ -145,12 +140,12 @@ class Application {
             updateProcedures.add(updateProcedure);
 
         }
-        createFiles(updateProcedures);
+        createFiles(filePath, updateProcedures);
         Main.print(TAG, "Update statements created");
     }
 
 
-    private void createInsertScripts() {
+    private void createInsertScripts(String filePath) {
         ArrayList<StoredProcedure> insertProcedures = new ArrayList<>();
 
         for (DbTable table : DbManager.db().getTables(TableType.Data, TableType.Type)) {
@@ -203,11 +198,11 @@ class Application {
             insertProcedures.add(insertProcedure);
         }
 
-        createFiles(insertProcedures);
+        createFiles(filePath, insertProcedures);
         Main.print(TAG, "Insert statements created");
     }
 
-    private void createDeleteScripts() {
+    private void createDeleteScripts(String filePath) {
         // Data and Type
         ArrayList<StoredProcedure> deleteProcedures = new ArrayList<>();
         for (DbTable table : DbManager.db().getTables(TableType.Data, TableType.Type)) {
@@ -238,12 +233,12 @@ class Application {
             deleteProcedures.add(deleteProcedure);
         }
 
-        createFiles(deleteProcedures);
+        createFiles(filePath, deleteProcedures);
         Main.print(TAG, "Delete statements created");
     }
 
 
-    private void createFiles(ArrayList<StoredProcedure> procedures) {
+    private void createFiles(String filePath, ArrayList<StoredProcedure> procedures) {
         if (filePath != null && !filePath.isEmpty()) {
             File path = new File(filePath);
             if (!path.exists()) {
@@ -263,7 +258,7 @@ class Application {
         }
     }
 
-    private void createUpdateScript(String name) {
+    private void createUpdateScript(String filePath, String name) {
         if (filePath != null && !filePath.isEmpty()) {
             File directory = new File(filePath);
             if (directory.exists()) {
@@ -280,7 +275,7 @@ class Application {
                         // Output file
                         Path output = Paths.get(name);
                         PrintWriter writer = new PrintWriter(output.toFile().getAbsolutePath());
-                        writer.print("");
+                        writer.print("USE " + DbManager.db().getSchema() + ";");
                         writer.close();
 
                         // Charset for read and write
@@ -288,8 +283,7 @@ class Application {
 
                         for (Path path : inputs) {
                             List<String> lines = Files.readAllLines(path, charset);
-                            Files.write(output, lines, charset, StandardOpenOption.CREATE,
-                                    StandardOpenOption.APPEND);
+                            Files.write(output, lines, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                         }
                         Main.print(TAG, "Update script created at " + filePath);
                     } catch (Exception e) {
@@ -305,4 +299,43 @@ class Application {
             Main.error(TAG, "No update script created because file path is empty");
         }
     }
+
+    // endregion
+
+    // region Update Scripts
+
+    void createTableUpdateScripts(long fromId, String fileName) {
+        List<UpdateScript> updateScripts = DbManager.db().readUpdateScripts(fromId);
+
+        try {
+            Path output = Paths.get(fileName);
+            PrintWriter writer = new PrintWriter(fileName);
+            writer.print("");
+            writer.close();
+
+            // Charset for read and write
+            Charset charset = StandardCharsets.UTF_8;
+            List<String> lines = new ArrayList<>();
+            for (UpdateScript script : updateScripts) {
+                String statement = String.format(insertUpdateScriptStatement,
+                        script.getId(),
+                        script.getMajorVersion(),
+                        script.getMinorVersion(),
+                        script.getBuildVersion(),
+                        script.getScript(),
+                        script.getDescription());
+                lines.add(statement);
+            }
+            if (lines.size() > 0) {
+                Files.write(output, lines, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                Main.print(TAG, "Update script created at " + fileName);
+            } else {
+                Main.print(TAG, "No update scripts found");
+            }
+        } catch (Exception e) {
+            Main.error(TAG, "Create update scripts failed", e);
+        }
+    }
+
+    // endregion
 }

@@ -19,6 +19,7 @@ public class DbManager {
     private static final String sqlLoadTables = "SELECT * FROM information_schema.tables where table_schema='%s';";
     private static final String sqlLoadForeignKeys = "SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_SCHEMA = '%s';";
     private static final String sqlLoadColumns = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' ORDER BY ORDINAL_POSITION;";
+    private static final String sqlGetUpdateScripts = "SELECT id, majorVersion, minorVersion, buildVersion, description, script from ww.updatescripts WHERE id >= %d";
 
     // Singleton
     private static final DbManager INSTANCE = new DbManager();
@@ -200,6 +201,12 @@ public class DbManager {
             Main.error(TAG, "getFromDb", e);
         }
         return result;
+    }
+
+
+    public List<UpdateScript> readUpdateScripts(long fromId) {
+        String sql = String.format(sqlGetUpdateScripts, fromId);
+        return getFromDb(sql, UpdateScript::new);
     }
 
     //endregion

@@ -7,16 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa27b380-b6ec-45c7-95a6-024451a7b871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/ScriptState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/updatescripts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Test/updatescripts.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/patrick.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,13 +26,21 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Patrick$Main.ic" NAME="Main Coverage Results" MODIFIED="1575388410533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.waldo.patrick.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="191" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="277" column="77" selection-start-line="277" selection-start-column="77" selection-end-line="277" selection-end-column="77" />
+            <state relative-caret-position="239">
+              <caret line="365" column="35" selection-start-line="365" selection-start-column="35" selection-end-line="365" selection-end-column="35" />
               <folding>
                 <element signature="method#Application#0;class#Application#0" />
                 <element signature="method#initialize#0;class#Application#0" />
@@ -48,16 +53,31 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="108" selection-start-line="21" selection-start-column="108" selection-end-line="21" selection-end-column="108" />
+            <state relative-caret-position="538">
+              <caret line="245" column="37" selection-start-line="245" selection-start-column="37" selection-end-line="245" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1199#1200#0" expanded="true" />
-                <element signature="e#1230#1231#0" expanded="true" />
-                <element signature="e#6423#6447#0" />
+                <element signature="e#1366#1367#0" expanded="true" />
+                <element signature="e#1397#1398#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-749">
+              <caret line="11" column="84" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="84" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2410#2411#0" expanded="true" />
+                <element signature="e#2466#2467#0" expanded="true" />
+                <element signature="e#2526#2527#0" expanded="true" />
+                <element signature="e#2582#2583#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,87 +86,43 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="46" />
+            <state relative-caret-position="477">
+              <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#710#711#0" expanded="true" />
-                <element signature="e#735#736#0" expanded="true" />
-                <element signature="e#769#770#0" expanded="true" />
-                <element signature="e#797#798#0" expanded="true" />
-                <element signature="e#833#834#0" expanded="true" />
-                <element signature="e#868#869#0" expanded="true" />
-                <element signature="e#921#922#0" expanded="true" />
-                <element signature="e#969#970#0" expanded="true" />
-                <element signature="e#1005#1006#0" expanded="true" />
-                <element signature="e#1040#1041#0" expanded="true" />
-                <element signature="e#1093#1094#0" expanded="true" />
-                <element signature="e#1141#1142#0" expanded="true" />
-                <element signature="e#1177#1178#0" expanded="true" />
-                <element signature="e#1212#1213#0" expanded="true" />
-                <element signature="e#1265#1266#0" expanded="true" />
-                <element signature="e#1313#1314#0" expanded="true" />
-                <element signature="e#1351#1352#0" expanded="true" />
-                <element signature="e#1385#1386#0" expanded="true" />
-                <element signature="e#1439#1440#0" expanded="true" />
-                <element signature="e#1485#1486#0" expanded="true" />
-                <element signature="e#1518#1519#0" expanded="true" />
-                <element signature="e#1547#1548#0" expanded="true" />
-                <element signature="e#1591#1592#0" expanded="true" />
-                <element signature="e#1627#1628#0" expanded="true" />
+                <element signature="e#1336#1337#0" expanded="true" />
+                <element signature="e#1398#1399#0" expanded="true" />
+                <element signature="e#1469#1470#0" expanded="true" />
+                <element signature="e#1570#1571#0" expanded="true" />
+                <element signature="e#1641#1642#0" expanded="true" />
+                <element signature="e#1742#1743#0" expanded="true" />
+                <element signature="e#1813#1814#0" expanded="true" />
+                <element signature="e#1914#1915#0" expanded="true" />
+                <element signature="e#1986#1987#0" expanded="true" />
+                <element signature="e#2086#2087#0" expanded="true" />
+                <element signature="e#2148#2149#0" expanded="true" />
+                <element signature="e#2228#2229#0" expanded="true" />
+                <element signature="e#1913#1914#0" expanded="true" />
+                <element signature="e#1944#1945#0" expanded="true" />
+                <element signature="e#2210#2211#0" expanded="true" />
+                <element signature="e#2240#2241#0" expanded="true" />
+                <element signature="e#2286#2287#0" expanded="true" />
+                <element signature="e#2324#2325#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/ScriptState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="130" selection-start-column="130" selection-end-column="130" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+            <state relative-caret-position="306">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="24" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/BaseDbObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2466#2467#0" expanded="true" />
-                <element signature="e#2582#2583#0" expanded="true" />
+                <element signature="e#225#226#0" expanded="true" />
+                <element signature="e#268#269#0" expanded="true" />
+                <element signature="e#287#288#0" expanded="true" />
+                <element signature="e#318#319#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,6 +135,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -196,12 +173,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/insertLinkStatement.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/insertStatement.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/ScriptCreator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/ScriptState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" />
       </list>
     </option>
   </component>
@@ -223,10 +201,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="1737" />
-    <option name="height" value="1398" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1738" />
+    <option name="height" value="1408" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -246,7 +225,47 @@
             <path>
               <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
               <item name="Patrick" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="patrick" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="patrick" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="patrick" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -257,7 +276,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574698788181" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575388708508" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -283,7 +302,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.waldo.patrick.Main" />
       <module name="Patrick" />
-      <option name="PROGRAM_PARAMETERS" value="UPDATESCRIPTS 192.168.0.248 ww waldo waldow 40 C:\Users\gebruiker\Source\Repos\Patrick\Test C:\Users\gebruiker\Source\Repos\Patrick\Test\procedures.sql C:\Users\gebruiker\Source\Repos\Patrick\Test\updatescripts.sql" />
+      <option name="PROGRAM_PARAMETERS" value="UPDATESCRIPTS_EXECUTE 192.168.0.248 ww waldo waldow 40 C:\Users\gebruiker\Source\Repos\Patrick\Test C:\Users\gebruiker\Source\Repos\Patrick\Test\procedures.sql C:\Users\gebruiker\Source\Repos\Patrick\Test\updatescripts.sql" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.waldo.patrick.*" />
@@ -332,9 +351,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2766" height="1126" extended-state="6" />
+    <frame x="-7" y="-7" width="1390" height="1126" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1293422" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26466164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -343,20 +363,21 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24647887" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.31991953" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5784708" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.31991953" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3296146" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32730925" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32696176" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32931727" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3279678" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32932332" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.24796748" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.24796748" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -401,6 +422,18 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java</url>
+          <line>237</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -585,10 +618,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/ScriptCreator.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="130" selection-start-column="130" selection-end-column="130" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        <state relative-caret-position="68">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -602,60 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/ScriptCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1271#1272#0" expanded="true" />
-            <element signature="e#1302#1303#0" expanded="true" />
-            <element signature="e#1350#1351#0" expanded="true" />
-            <element signature="e#1390#1391#0" expanded="true" />
-            <element signature="e#1433#1434#0" expanded="true" />
-            <element signature="e#1472#1473#0" expanded="true" />
-            <element signature="e#1536#1537#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
-            <element signature="e#1634#1635#0" expanded="true" />
-            <element signature="e#1672#1673#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
-            <element signature="e#1788#1789#0" expanded="true" />
-            <element signature="e#1830#1831#0" expanded="true" />
-            <element signature="e#1868#1869#0" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1984#1985#0" expanded="true" />
-            <element signature="e#2026#2027#0" expanded="true" />
-            <element signature="e#2064#2065#0" expanded="true" />
-            <element signature="e#2126#2127#0" expanded="true" />
-            <element signature="e#2180#2181#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
-            <element signature="e#2260#2261#0" expanded="true" />
-            <element signature="e#2322#2323#0" expanded="true" />
-            <element signature="e#2376#2377#0" expanded="true" />
-            <element signature="e#2422#2423#0" expanded="true" />
-            <element signature="e#2464#2465#0" expanded="true" />
-            <element signature="e#2534#2535#0" expanded="true" />
-            <element signature="e#2596#2597#0" expanded="true" />
-            <element signature="e#2642#2643#0" expanded="true" />
-            <element signature="e#2684#2685#0" expanded="true" />
-            <element signature="e#2754#2755#0" expanded="true" />
-            <element signature="e#2816#2817#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2466#2467#0" expanded="true" />
-            <element signature="e#2582#2583#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -663,64 +650,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/ScriptState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="108" selection-start-line="21" selection-start-column="108" selection-end-line="21" selection-end-column="108" />
+        <state relative-caret-position="306">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1199#1200#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-            <element signature="e#6423#6447#0" />
+            <element signature="e#225#226#0" expanded="true" />
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#318#319#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="46" />
+        <state relative-caret-position="477">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#797#798#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#868#869#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#969#970#0" expanded="true" />
-            <element signature="e#1005#1006#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1093#1094#0" expanded="true" />
-            <element signature="e#1141#1142#0" expanded="true" />
-            <element signature="e#1177#1178#0" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-            <element signature="e#1265#1266#0" expanded="true" />
-            <element signature="e#1313#1314#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#1385#1386#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1485#1486#0" expanded="true" />
-            <element signature="e#1518#1519#0" expanded="true" />
-            <element signature="e#1547#1548#0" expanded="true" />
-            <element signature="e#1591#1592#0" expanded="true" />
-            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1398#1399#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+            <element signature="e#1742#1743#0" expanded="true" />
+            <element signature="e#1813#1814#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1986#1987#0" expanded="true" />
+            <element signature="e#2086#2087#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2228#2229#0" expanded="true" />
+            <element signature="e#1913#1914#0" expanded="true" />
+            <element signature="e#1944#1945#0" expanded="true" />
+            <element signature="e#2210#2211#0" expanded="true" />
+            <element signature="e#2240#2241#0" expanded="true" />
+            <element signature="e#2286#2287#0" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="130" selection-start-column="130" selection-end-column="130" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="277" column="77" selection-start-line="277" selection-start-column="77" selection-end-line="277" selection-end-column="77" />
+        <state relative-caret-position="239">
+          <caret line="365" column="35" selection-start-line="365" selection-start-column="35" selection-end-line="365" selection-end-column="35" />
           <folding>
             <element signature="method#Application#0;class#Application#0" />
             <element signature="method#initialize#0;class#Application#0" />
@@ -728,6 +702,32 @@
             <element signature="method#createInsertScripts#0;class#Application#0" />
             <element signature="method#createDeleteScripts#0;class#Application#0" />
             <element signature="method#createFiles#0;class#Application#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-749">
+          <caret line="11" column="84" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2410#2411#0" expanded="true" />
+            <element signature="e#2466#2467#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2582#2583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="245" column="37" selection-start-line="245" selection-start-column="37" selection-end-line="245" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1397#1398#0" expanded="true" />
           </folding>
         </state>
       </provider>

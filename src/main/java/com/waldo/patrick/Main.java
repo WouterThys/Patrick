@@ -8,7 +8,8 @@ import java.io.File;
 public class Main {
 
     private static final String TAG = "MAIN";
-    private static final String MODE_UPDATE_SCRIPTS = "UPDATESCRIPTS";
+    private static final String MODE_UPDATE_SCRIPTS_CREATE = "UPDATESCRIPTS_CREATE";
+    private static final String MODE_UPDATE_SCRIPTS_EXECUTE = "UPDATESCRIPTS_EXECUTE";
     private static final String MODE_PROCEDURES = "PROCEDURES";
 
     private static final int ARG_MODE = 0;
@@ -51,9 +52,14 @@ public class Main {
                         case MODE_PROCEDURES:
                             Application.app().createStoredProcedures(args[ARG_TARGET_DIR], args[ARG_TARGET_PROCEDURES]);
                             break;
-                        case MODE_UPDATE_SCRIPTS:
+                        case MODE_UPDATE_SCRIPTS_CREATE:
                             Application.app().createTableUpdateScripts(Long.valueOf(args[ARG_FROM_ID]), args[ARG_TARGET_UPDATE_SCRIPTS]);
                             break;
+                        case MODE_UPDATE_SCRIPTS_EXECUTE:
+                            Application.app().executeTableUpdateScripts();
+                            break;
+
+                            default: error(TAG, "Invalid mode");
                     }
                 }
 

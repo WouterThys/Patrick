@@ -3,6 +3,7 @@ package com.waldo.patrick.database;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import com.waldo.patrick.Main;
 import com.waldo.patrick.database.classes.*;
+import org.springframework.lang.NonNull;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,9 @@ public class DbManager {
     private static final String sqlLoadTables = "SELECT * FROM information_schema.tables where table_schema='%s';";
     private static final String sqlLoadForeignKeys = "SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_SCHEMA = '%s';";
     private static final String sqlLoadColumns = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' ORDER BY ORDINAL_POSITION;";
-    private static final String sqlGetUpdateScripts = "SELECT id, majorVersion, minorVersion, buildVersion, description, script from ww.updatescripts WHERE id >= %d";
+    private static final String sqlGetUpdateScriptsFromId = "SELECT * FROM ww.updatescripts WHERE id >= %d"; // Scripts from Id
+    private static final String sqlGetUpdateScriptsToExecute = "SELECT * FROM updatescripts WHERE state < 1"; // Scripts where state != executed
+    private static final String sqlUpdateScriptState = "UPDATE updatescripts SET executed = ?, state = ?, message = ? WHERE id = ?;";
 
     // Singleton
     private static final DbManager INSTANCE = new DbManager();
@@ -187,6 +190,7 @@ public class DbManager {
     private interface ICreateNew<T extends IDbObject> {
         T onCreateNew();
     }
+    @NonNull
     private <T extends IDbObject> List<T> getFromDb(String sql, ICreateNew<T> creator) {
         List<T> result = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
@@ -203,10 +207,47 @@ public class DbManager {
         return result;
     }
 
-
-    public List<UpdateScript> readUpdateScripts(long fromId) {
-        String sql = String.format(sqlGetUpdateScripts, fromId);
+    @NonNull
+    public List<UpdateScript> getUpdateScriptsFromId(long fromId) {
+        String sql = String.format(sqlGetUpdateScriptsFromId, fromId);
         return getFromDb(sql, UpdateScript::new);
+    }
+
+    @NonNull
+    public List<UpdateScript> getUpdateScriptsToExecute() {
+        return getFromDb(sqlGetUpdateScriptsToExecute, UpdateScript::new);
+    }
+
+    public void updateUpdateScript(UpdateScript script) throws SQLException {
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement stmt = connection.prepareStatement(sqlUpdateScriptState)) {
+                stmt.setDate(1, script.getExecuted());
+                stmt.setInt(2, script.getState().getIntValue());
+                stmt.setString(3, script.getMessage());
+                stmt.setLong(4, script.getId());
+                stmt.execute();
+            }
+        }
+    }
+
+    public int executeScript(String script) throws SQLException {
+        if (script != null && !script.isEmpty()) {
+
+            String[] statements = script.split(";");
+
+            try (Connection connection = dataSource.getConnection()) {
+                for (String statement : statements) {
+                    if (statement != null && !statement.trim().isEmpty()) {
+                        try (PreparedStatement stmt = connection.prepareStatement(statement)) {
+                            stmt.execute();
+                        }
+                    }
+                }
+            }
+
+            return statements.length;
+        }
+        return 0;
     }
 
     //endregion

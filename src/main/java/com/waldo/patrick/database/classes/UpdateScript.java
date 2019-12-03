@@ -1,7 +1,9 @@
 package com.waldo.patrick.database.classes;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 public class UpdateScript extends BaseDbObject {
 
@@ -12,6 +14,10 @@ public class UpdateScript extends BaseDbObject {
     private String description;
     private String script;
 
+    private Date executed;
+    private ScriptState state;
+    private String message;
+
     @Override
     public void initFromReader(ResultSet rs) throws SQLException {
         id = rs.getLong("id");
@@ -20,6 +26,21 @@ public class UpdateScript extends BaseDbObject {
         buildVersion = rs.getInt("buildVersion");
         description = rs.getString("description");
         script = rs.getString("script");
+
+        executed = rs.getDate("executed");
+        state = ScriptState.fromInt(rs.getInt("state"));
+        message = rs.getString("message");
+    }
+
+    public void updateState(ScriptState state) {
+        this.state = state;
+        setExecuted();
+    }
+
+    private void setExecuted() {
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date currentDate = calendar.getTime();
+        executed = new java.sql.Date(currentDate.getTime());
     }
 
 
@@ -69,5 +90,24 @@ public class UpdateScript extends BaseDbObject {
 
     public void setScript(String script) {
         this.script = script;
+    }
+
+    public Date getExecuted() {
+        return executed;
+    }
+
+    public ScriptState getState() {
+        if (state == null) {
+            state = ScriptState.Pending;
+        }
+        return state;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

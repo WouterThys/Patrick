@@ -302,38 +302,93 @@ class Application {
 
     // endregion
 
-    // region Update Scripts
+    // region Create Update Scripts
 
     void createTableUpdateScripts(long fromId, String fileName) {
-        List<UpdateScript> updateScripts = DbManager.db().readUpdateScripts(fromId);
+        Main.print(TAG, "Creating updatescripts starting from id " + fromId);
+        List<UpdateScript> updateScripts = DbManager.db().getUpdateScriptsFromId(fromId);
 
-        try {
-            Path output = Paths.get(fileName);
-            PrintWriter writer = new PrintWriter(fileName);
-            writer.print("");
-            writer.close();
+        if (updateScripts.size() > 0) {
+            try {
+                Path output = Paths.get(fileName);
+                PrintWriter writer = new PrintWriter(fileName);
+                writer.print("");
+                writer.close();
 
-            // Charset for read and write
-            Charset charset = StandardCharsets.UTF_8;
-            List<String> lines = new ArrayList<>();
+                // Charset for read and write
+                Charset charset = StandardCharsets.UTF_8;
+                List<String> lines = new ArrayList<>();
+                for (UpdateScript script : updateScripts) {
+                    String statement = String.format(insertUpdateScriptStatement,
+                            script.getId(),
+                            script.getMajorVersion(),
+                            script.getMinorVersion(),
+                            script.getBuildVersion(),
+                            script.getScript(),
+                            script.getDescription());
+                    lines.add(statement);
+                }
+                if (lines.size() > 0) {
+                    Files.write(output, lines, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                    Main.print(TAG, "Update script created at " + fileName);
+                } else {
+                    Main.print(TAG, "No update scripts found");
+                }
+            } catch (Exception e) {
+                Main.error(TAG, "Create update scripts failed", e);
+            }
+        } else {
+            Main.print(TAG, "No updatescripts to create");
+        }
+    }
+
+    // endregion
+
+    // region Execute Update Scripts
+
+    void executeTableUpdateScripts() {
+        List<UpdateScript> updateScripts = DbManager.db().getUpdateScriptsToExecute();
+        if (updateScripts.size() > 0) {
+            Main.print(TAG, updateScripts.size() + " to execute");
+
             for (UpdateScript script : updateScripts) {
-                String statement = String.format(insertUpdateScriptStatement,
-                        script.getId(),
-                        script.getMajorVersion(),
-                        script.getMinorVersion(),
-                        script.getBuildVersion(),
-                        script.getScript(),
-                        script.getDescription());
-                lines.add(statement);
+                if (!script.getScript().isEmpty()) {
+                    try {
+
+                        // Set state
+                        script.updateState(ScriptState.Executing);
+                        Main.print(TAG, "Executing script " + script.getDescription() + "...");
+                        DbManager.db().updateUpdateScript(script);
+
+                        // Execute script
+                        String statement = script.getScript();
+                        statement = statement.replace("%SCHEMA%", DbManager.db().getSchema());
+                        DbManager.db().executeScript(statement);
+
+                        // Set state
+                        script.updateState(ScriptState.Executed);
+                        Main.print(TAG, "Script " + script.getDescription() + " executed");
+                        DbManager.db().updateUpdateScript(script);
+
+                    } catch (SQLException ex) {
+                        Main.error(TAG, "Script failed", ex);
+                        try {
+                            // Set state
+                            script.updateState(ScriptState.Failed);
+                            script.setMessage(ex.toString());
+                            DbManager.db().updateUpdateScript(script);
+                        } catch (SQLException ex2) {
+                            // Nothing we can do any more
+                        }
+                    }
+
+                } else {
+                    Main.error(TAG, "Script " + script.getDescription() + " is empty..");
+                }
             }
-            if (lines.size() > 0) {
-                Files.write(output, lines, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-                Main.print(TAG, "Update script created at " + fileName);
-            } else {
-                Main.print(TAG, "No update scripts found");
-            }
-        } catch (Exception e) {
-            Main.error(TAG, "Create update scripts failed", e);
+
+        } else {
+            Main.print(TAG, "No update scripts to execute");
         }
     }
 

@@ -21,8 +21,13 @@ public class DbManager {
     private static final String sqlLoadForeignKeys = "SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_SCHEMA = '%s';";
     private static final String sqlLoadColumns = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' ORDER BY ORDINAL_POSITION;";
     private static final String sqlGetUpdateScriptsFromId = "SELECT * FROM ww.updatescripts WHERE id >= %d"; // Scripts from Id
-    private static final String sqlGetUpdateScriptsToExecute = "SELECT * FROM updatescripts WHERE state < 1"; // Scripts where state != executed
-    private static final String sqlUpdateScriptState = "UPDATE updatescripts SET executed = ?, state = ?, message = ? WHERE id = ?;";
+    private static final String sqlUpdateScriptState = "UPDATE updatescripts SET executed = ?, state = ?, scriptsProcessed = ?, message = ? WHERE id = ?;";
+    private static final String sqlGetUpdateScriptsToExecute =
+            "SELECT * FROM updatescripts WHERE \n" +
+                    "(state < 1) AND\n" +
+                    "(majorVersion < @M) OR\n" +
+                    "(majorVersion = @M AND minorVersion < @m) OR\n" +
+                    "(majorVersion = @M AND minorVersion = @m AND buildVersion <= @b);";
 
     // Singleton
     private static final DbManager INSTANCE = new DbManager();
@@ -214,8 +219,12 @@ public class DbManager {
     }
 
     @NonNull
-    public List<UpdateScript> getUpdateScriptsToExecute() {
-        return getFromDb(sqlGetUpdateScriptsToExecute, UpdateScript::new);
+    public List<UpdateScript> getUpdateScriptsToExecute(int major, int minor, int build) {
+        String sql = sqlGetUpdateScriptsToExecute;
+        sql = sql.replace("@M", String.valueOf(major));
+        sql = sql.replace("@m", String.valueOf(minor));
+        sql = sql.replace("@b", String.valueOf(build));
+        return getFromDb(sql, UpdateScript::new);
     }
 
     public void updateUpdateScript(UpdateScript script) throws SQLException {
@@ -223,14 +232,16 @@ public class DbManager {
             try (PreparedStatement stmt = connection.prepareStatement(sqlUpdateScriptState)) {
                 stmt.setDate(1, script.getExecuted());
                 stmt.setInt(2, script.getState().getIntValue());
-                stmt.setString(3, script.getMessage());
-                stmt.setLong(4, script.getId());
+                stmt.setInt(3, script.getScriptsProcessed());
+                stmt.setString(4, script.getMessage());
+                stmt.setLong(5, script.getId());
                 stmt.execute();
             }
         }
     }
 
     public int executeScript(String script) throws SQLException {
+        int executed = 0;
         if (script != null && !script.isEmpty()) {
 
             String[] statements = script.split(";");
@@ -240,14 +251,14 @@ public class DbManager {
                     if (statement != null && !statement.trim().isEmpty()) {
                         try (PreparedStatement stmt = connection.prepareStatement(statement)) {
                             stmt.execute();
+                            executed++;
                         }
                     }
                 }
             }
 
-            return statements.length;
         }
-        return 0;
+        return executed;
     }
 
     //endregion

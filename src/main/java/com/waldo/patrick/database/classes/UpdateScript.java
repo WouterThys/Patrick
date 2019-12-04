@@ -15,6 +15,7 @@ public class UpdateScript extends BaseDbObject {
     private String script;
 
     private Date executed;
+    private int scriptsProcessed;
     private ScriptState state;
     private String message;
 
@@ -28,6 +29,7 @@ public class UpdateScript extends BaseDbObject {
         script = rs.getString("script");
 
         executed = rs.getDate("executed");
+        scriptsProcessed = rs.getInt("scriptsProcessed");
         state = ScriptState.fromInt(rs.getInt("state"));
         message = rs.getString("message");
     }
@@ -101,6 +103,14 @@ public class UpdateScript extends BaseDbObject {
             state = ScriptState.Pending;
         }
         return state;
+    }
+
+    public int getScriptsProcessed() {
+        return scriptsProcessed;
+    }
+
+    public void setScriptsProcessed(int scriptsProcessed) {
+        this.scriptsProcessed = scriptsProcessed;
     }
 
     public String getMessage() {

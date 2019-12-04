@@ -7,6 +7,20 @@ import java.io.File;
 
 public class Main {
 
+    /*
+    * PARAMETERS
+    * -------------------------------------
+    *  - MODE 'UPDATESCRIPTS_CREATE'
+    *  -> UPDATESCRIPTS_CREATE <DB_SERVER> <DB_SCHEMA> <DB_USER> <DB_PASSWORD> <FROM_ID> <TARGET_UPDATE_SCRIPT>
+    *
+    *  - MODE 'PROCEDURES'
+    *  -> PROCEDURES <DB_SERVER> <DB_SCHEMA> <DB_USER> <DB_PASSWORD> <TARGET_DIR> <PROCEDURE_SCRIPT>
+    *
+    *  - MODE 'UPDATESCRIPTS_EXECUTE'
+    *  -> UPDATESCRIPTS_EXECUTE <DB_SERVER> <DB_SCHEMA> <DB_USER> <DB_PASSWORD> <TARGET_DIR> <VERSION>
+    *
+    * */
+
     private static final String TAG = "MAIN";
     private static final String MODE_UPDATE_SCRIPTS_CREATE = "UPDATESCRIPTS_CREATE";
     private static final String MODE_UPDATE_SCRIPTS_EXECUTE = "UPDATESCRIPTS_EXECUTE";
@@ -17,10 +31,19 @@ public class Main {
     private static final int ARG_DB_SCHEMA = 2;
     private static final int ARG_DB_USER = 3;
     private static final int ARG_DB_PASSWORD = 4;
+
+    // PROCEDURES params
+    private static final int ARG_TARGET_DIR = 5;
+    private static final int ARG_TARGET_PROCEDURES = 6;
+
+    // UPDATESCRIPTS_CREATE params
     private static final int ARG_FROM_ID = 5;
-    private static final int ARG_TARGET_DIR = 6;
-    private static final int ARG_TARGET_PROCEDURES = 7;
-    private static final int ARG_TARGET_UPDATE_SCRIPTS = 8;
+    private static final int ARG_TARGET_UPDATE_SCRIPTS = 6;
+
+    // UPDATESCRIPTS_EXECUTE params
+    private static final int ARG_VERSION = 5;
+
+
 
     public static void main(String[] args) {
         // Start up
@@ -42,25 +65,34 @@ public class Main {
                         args[ARG_DB_USER],
                         args[ARG_DB_PASSWORD]);
 
-                // Start app
-                print(TAG, "Start initialize for schema " + dbConnection.getSchema());
-                if (!Application.app().initialize(dbConnection)) {
-                    error(TAG, "Failed to initialize");
-                } else {
+                switch (mode) {
+                    case MODE_PROCEDURES:
+                        print(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
+                        if (!Application.app().initialize(dbConnection)) {
+                            error(TAG, "Failed to initialize");
+                            return;
+                        }
+                        Application.app().createStoredProcedures(args[ARG_TARGET_DIR], args[ARG_TARGET_PROCEDURES]);
+                        break;
+                    case MODE_UPDATE_SCRIPTS_CREATE:
+                        print(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
+                        if (!Application.app().initialize(dbConnection)) {
+                            error(TAG, "Failed to initialize");
+                            return;
+                        }
+                        Application.app().createTableUpdateScripts(Long.valueOf(args[ARG_FROM_ID]), args[ARG_TARGET_UPDATE_SCRIPTS]);
+                        break;
+                    case MODE_UPDATE_SCRIPTS_EXECUTE:
+                        print(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
+                        if (!Application.app().initialize(dbConnection)) {
+                            error(TAG, "Failed to initialize");
+                            return;
+                        }
+                        String[] split = args[ARG_VERSION].split("\\.");
+                        Application.app().executeTableUpdateScripts(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]));
+                        break;
 
-                    switch (mode) {
-                        case MODE_PROCEDURES:
-                            Application.app().createStoredProcedures(args[ARG_TARGET_DIR], args[ARG_TARGET_PROCEDURES]);
-                            break;
-                        case MODE_UPDATE_SCRIPTS_CREATE:
-                            Application.app().createTableUpdateScripts(Long.valueOf(args[ARG_FROM_ID]), args[ARG_TARGET_UPDATE_SCRIPTS]);
-                            break;
-                        case MODE_UPDATE_SCRIPTS_EXECUTE:
-                            Application.app().executeTableUpdateScripts();
-                            break;
-
-                            default: error(TAG, "Invalid mode");
-                    }
+                    default: error(TAG, "Invalid mode");
                 }
 
             } catch (Exception e) {

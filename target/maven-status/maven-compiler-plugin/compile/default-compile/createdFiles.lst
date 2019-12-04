@@ -6,6 +6,7 @@ com\waldo\patrick\database\classes\DbForeignKey.class
 com\waldo\patrick\database\DbManager.class
 com\waldo\patrick\scripts\StoredProcedure.class
 com\waldo\patrick\database\classes\DbTable.class
+com\waldo\patrick\database\classes\ScriptState.class
 com\waldo\patrick\database\classes\IDbObject.class
 com\waldo\patrick\database\DbManager$ICreateNew.class
 com\waldo\patrick\Application.class

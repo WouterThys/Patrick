@@ -38,7 +38,6 @@ class Application {
     }
 
     boolean initialize(DbConnection dbConnection) {
-
         Main.print(TAG, "Reading config");
         try {
             readConfigData();
@@ -346,15 +345,14 @@ class Application {
 
     // region Execute Update Scripts
 
-    void executeTableUpdateScripts() {
-        List<UpdateScript> updateScripts = DbManager.db().getUpdateScriptsToExecute();
+    void executeTableUpdateScripts(int major, int minor, int build) {
+        List<UpdateScript> updateScripts = DbManager.db().getUpdateScriptsToExecute(major, minor, build);
         if (updateScripts.size() > 0) {
             Main.print(TAG, updateScripts.size() + " to execute");
 
             for (UpdateScript script : updateScripts) {
                 if (!script.getScript().isEmpty()) {
                     try {
-
                         // Set state
                         script.updateState(ScriptState.Executing);
                         Main.print(TAG, "Executing script " + script.getDescription() + "...");
@@ -363,7 +361,8 @@ class Application {
                         // Execute script
                         String statement = script.getScript();
                         statement = statement.replace("%SCHEMA%", DbManager.db().getSchema());
-                        DbManager.db().executeScript(statement);
+                        int processed = DbManager.db().executeScript(statement);
+                        script.setScriptsProcessed(processed);
 
                         // Set state
                         script.updateState(ScriptState.Executed);

@@ -24,10 +24,10 @@ public class DbManager {
     private static final String sqlUpdateScriptState = "UPDATE updatescripts SET executed = ?, state = ?, scriptsProcessed = ?, message = ? WHERE id = ?;";
     private static final String sqlGetUpdateScriptsToExecute =
             "SELECT * FROM updatescripts WHERE \n" +
-                    "(state < 1) AND\n" +
+                    "(state < 1) AND (\n" +
                     "(majorVersion < @M) OR\n" +
                     "(majorVersion = @M AND minorVersion < @m) OR\n" +
-                    "(majorVersion = @M AND minorVersion = @m AND buildVersion <= @b);";
+                    "(majorVersion = @M AND minorVersion = @m AND buildVersion <= @b));";
 
     // Singleton
     private static final DbManager INSTANCE = new DbManager();

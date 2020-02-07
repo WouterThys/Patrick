@@ -103,7 +103,7 @@ public class Main {
     }
 
     public static void print(String tag, String message) {
-        System.out.println(tag + ": " + message);
+        //System.out.println(tag + ": " + message);
     }
 
     public static void error(String tag, String message) {

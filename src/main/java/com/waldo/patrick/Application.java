@@ -115,14 +115,14 @@ class Application {
             StringBuilder lijst1 = new StringBuilder();
 
             for (DbColumn column : table.getColumns()) {
-                if ((!column.getName().equals("id")) && (!column.getName().equals("deleted")) && (!column.getName().equals("lastModified"))) {
+                if ((!column.getName().equalsIgnoreCase("id")) && (!column.getName().equalsIgnoreCase("deleted")) && (!column.getName().equalsIgnoreCase("lastModified"))) {
                     lijst1.append("\n" + "  ").append(column.getName()).append(" ").append(column.getDataType()).append(" ").append(column.getRightTypeAmount()).append(",");
                 }
 
             }
             StringBuilder lijst2 = new StringBuilder();
             for (DbColumn column : table.getColumns()) {
-                if ((!column.getName().equals("id")) && (!column.getName().equals("deleted")) && (!column.getName().equals("lastModified"))) {
+                if ((!column.getName().equalsIgnoreCase("id")) && (!column.getName().equalsIgnoreCase("deleted")) && (!column.getName().equalsIgnoreCase("lastModified"))) {
                     lijst2.append("\n" + "\t").append(column.getName()).append(" = ").append(column.getName()).append(",");
                 }
             }
@@ -154,13 +154,13 @@ class Application {
             StringBuilder lijst1 = new StringBuilder();
 
             for (DbColumn column : table.getColumns()) {
-                if ((!column.getName().equals("id")) && (!column.getName().equals("deleted")) && (!column.getName().equals("lastModified"))) {
+                if ((!column.getName().equalsIgnoreCase("id")) && (!column.getName().equalsIgnoreCase("deleted")) && (!column.getName().equalsIgnoreCase("lastModified"))) {
                     lijst1.append("\n" + "  ").append(column.getName()).append(" ").append(column.getDataType()).append(" ").append(column.getRightTypeAmount()).append(",");
                 }
             }
             StringBuilder lijst2 = new StringBuilder();
             for (DbColumn column : table.getColumns()) {
-                if ((!column.getName().equals("id")) && (!column.getName().equals("deleted")) && (!column.getName().equals("lastModified"))) {
+                if ((!column.getName().equalsIgnoreCase("id")) && (!column.getName().equalsIgnoreCase("deleted")) && (!column.getName().equalsIgnoreCase("lastModified"))) {
                     lijst2.append("\n" + "\t").append(column.getName()).append(",");
                 }
             }

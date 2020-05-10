@@ -1,0 +1,12 @@
+USE `%s`;
+DROP procedure IF EXISTS `%sSelectAll`;
+
+DELIMITER $$
+USE `%s`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `%sSelectAll`()
+BEGIN
+
+	SELECT * FROM %s;
+
+END$$
+DELIMITER ;

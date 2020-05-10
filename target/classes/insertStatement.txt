@@ -1,0 +1,17 @@
+USE `%s`;
+DROP procedure IF EXISTS `%sInsert`;
+
+DELIMITER $$
+USE `%s`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `%sInsert`(%s
+  OUT lid int
+)
+BEGIN
+  INSERT INTO %s(	%s
+	lastModified)
+  VALUES(	%s
+	now());
+  SET lid = last_insert_id();
+END$$
+
+DELIMITER ;

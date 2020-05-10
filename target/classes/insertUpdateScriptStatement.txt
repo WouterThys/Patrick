@@ -1,0 +1,1 @@
+INSERT INTO updatescripts (`id`,`majorVersion`,`minorVersion`,`buildVersion`,`script`,`description`) VALUES (%d,%d,%d,%d,'%s','%s');

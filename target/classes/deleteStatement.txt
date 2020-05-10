@@ -1,0 +1,13 @@
+USE `%s`;
+DROP procedure IF EXISTS `%sDelete`;
+
+DELIMITER $$
+USE `%s`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `%sDelete`(
+  deleteId int(11)
+)
+BEGIN
+ DELETE FROM %s WHERE id = deleteId;
+END$$
+
+DELIMITER ;

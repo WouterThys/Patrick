@@ -1,0 +1,18 @@
+USE `%s`;
+DROP procedure IF EXISTS `%sUpdate`;
+
+DELIMITER $$
+USE `%s`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `%sUpdate`(%s
+  updateId int
+)
+BEGIN
+  UPDATE
+	%s
+  SET	%s
+	lastModified = current_timestamp()
+  WHERE
+	id = updateId;
+END$$
+
+DELIMITER ;

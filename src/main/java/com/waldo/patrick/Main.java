@@ -9,6 +9,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+
         // Start up
         String startUpPath = new File("").getAbsolutePath() + File.separator;
         System.out.println("Start up @" + startUpPath);
@@ -24,6 +25,8 @@ public class Main {
             Application.app().createScripts();
 
             String input = scanner.nextLine();
+
+
         }
     }
 

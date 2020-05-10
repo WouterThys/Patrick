@@ -8,12 +8,10 @@ import com.waldo.patrick.database.classes.TableType;
 import com.waldo.patrick.scripts.StoredProcedure;
 import com.waldo.patrick.settings.AppSettings;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
 

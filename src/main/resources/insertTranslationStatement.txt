@@ -1,0 +1,1 @@
+INSERT INTO `translations` (`id`,`code`,`description`,`type`,`enabled`,`lastmodified`,`nl`,`en`,`fr`) VALUES (%d,'%s','%s','%s',%s,'%s','%s','%s','%s');

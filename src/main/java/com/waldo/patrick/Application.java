@@ -4,7 +4,10 @@ import com.waldo.patrick.database.DbManager;
 import com.waldo.patrick.database.classes.*;
 import com.waldo.patrick.scripts.StoredProcedure;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -26,6 +29,7 @@ class Application {
     private String deleteLinkStatement;
     private String insertLinkStatement;
     private String insertUpdateScriptStatement;
+    private String insertTranslationStatement;
 
     // Singleton
     private static final Application INSTANCE = new Application();
@@ -38,21 +42,18 @@ class Application {
     }
 
     boolean initialize(DbConnection dbConnection) {
-        Main.print(TAG, "Reading config");
         try {
             readConfigData();
         } catch (IOException e) {
             Main.error(TAG, "Reading config", e);
         }
 
-        Main.print(TAG, "Initialize database");
         try {
             DbManager.db().initialize(dbConnection);
         } catch (SQLException e) {
             Main.error(TAG, "Initialize database", e);
         }
 
-        Main.print(TAG, "Initialized");
         return true;
     }
 
@@ -64,6 +65,7 @@ class Application {
         deleteLinkStatement = readFileAsString("deleteLinkStatement.txt");
         insertLinkStatement = readFileAsString("insertLinkStatement.txt");
         insertUpdateScriptStatement = readFileAsString("insertUpdateScriptStatement.txt");
+        insertTranslationStatement = readFileAsString("insertTranslationStatement.txt");
     }
 
     private String readFileAsString(String fileName) throws IOException {
@@ -102,7 +104,7 @@ class Application {
         }
 
         createFiles(filePath, selectAllProcedures);
-        Main.print(TAG, "Select statements created");
+        Main.printLine(TAG, "Select statements created");
     }
 
     private void createUpdateScripts(String filePath) {
@@ -140,7 +142,7 @@ class Application {
 
         }
         createFiles(filePath, updateProcedures);
-        Main.print(TAG, "Update statements created");
+        Main.printLine(TAG, "Update statements created");
     }
 
 
@@ -198,7 +200,7 @@ class Application {
         }
 
         createFiles(filePath, insertProcedures);
-        Main.print(TAG, "Insert statements created");
+        Main.printLine(TAG, "Insert statements created");
     }
 
     private void createDeleteScripts(String filePath) {
@@ -233,7 +235,7 @@ class Application {
         }
 
         createFiles(filePath, deleteProcedures);
-        Main.print(TAG, "Delete statements created");
+        Main.printLine(TAG, "Delete statements created");
     }
 
 
@@ -284,7 +286,8 @@ class Application {
                             List<String> lines = Files.readAllLines(path, charset);
                             Files.write(output, lines, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                         }
-                        Main.print(TAG, "Update script created at " + filePath);
+                        Main.printLine(TAG, "");
+                        Main.printLine(TAG, "Update script created at " + filePath);
                     } catch (Exception e) {
                         Main.error(TAG, "Create update scripts", e);
                     }
@@ -303,10 +306,19 @@ class Application {
 
     // region Create Update Scripts
 
-    void createTableUpdateScripts(long fromId, String fileName) {
-        Main.print(TAG, "Creating updatescripts starting from id " + fromId);
-        List<UpdateScript> updateScripts = DbManager.db().getUpdateScriptsFromId(fromId);
+    void createTableUpdateScripts(int major, int minor, int build, String fileName) {
+        Main.printLine(TAG, "Creating update-scripts for version " + major + "." + minor + "." + build);
 
+        // Remove file if already created
+        File temp = new File(fileName);
+        if (temp.exists()) {
+            temp.delete();
+        }
+
+        // Fetch all update-scripts until release version
+        List<UpdateScript> updateScripts = DbManager.db().getUpdateScriptsUntilVersion(major, minor, build);
+
+        // Write the scripts to the file
         if (updateScripts.size() > 0) {
             try {
                 Path output = Paths.get(fileName);
@@ -326,18 +338,19 @@ class Application {
                             script.getScript(),
                             script.getDescription());
                     lines.add(statement);
+                    Main.progress();
                 }
                 if (lines.size() > 0) {
                     Files.write(output, lines, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-                    Main.print(TAG, "Update script created at " + fileName);
+                    Main.printLine(TAG, "Update script created at " + fileName);
                 } else {
-                    Main.print(TAG, "No update scripts found");
+                    Main.printLine(TAG, "No update-scripts found");
                 }
             } catch (Exception e) {
-                Main.error(TAG, "Create update scripts failed", e);
+                Main.error(TAG, "Create update-scripts failed", e);
             }
         } else {
-            Main.print(TAG, "No updatescripts to create");
+            Main.printLine(TAG, "No update-scripts to create");
         }
     }
 
@@ -348,14 +361,13 @@ class Application {
     void executeTableUpdateScripts(int major, int minor, int build) {
         List<UpdateScript> updateScripts = DbManager.db().getUpdateScriptsToExecute(major, minor, build);
         if (updateScripts.size() > 0) {
-            Main.print(TAG, updateScripts.size() + " to execute");
+            Main.printLine(TAG, updateScripts.size() + " to execute");
 
             for (UpdateScript script : updateScripts) {
                 if (!script.getScript().isEmpty()) {
                     try {
                         // Set state
                         script.updateState(ScriptState.Executing);
-                        Main.print(TAG, "Executing script " + script.getDescription() + "...");
                         DbManager.db().updateUpdateScript(script);
 
                         // Execute script
@@ -366,8 +378,9 @@ class Application {
 
                         // Set state
                         script.updateState(ScriptState.Executed);
-                        Main.print(TAG, "Script " + script.getDescription() + " executed");
                         DbManager.db().updateUpdateScript(script);
+
+                        Main.progress();
 
                     } catch (SQLException ex) {
                         Main.error(TAG, "Script failed", ex);
@@ -387,7 +400,66 @@ class Application {
             }
 
         } else {
-            Main.print(TAG, "No update scripts to execute");
+            Main.printLine(TAG, "No update scripts to execute");
+        }
+    }
+
+    // endregion
+
+    // region Translations
+
+    void createTranslations(String fileName) {
+        Main.printLine(TAG, "Creating translations");
+
+        // Remove file if already created
+        File temp = new File(fileName);
+        if (temp.exists()) {
+            temp.delete();
+        }
+
+        // Fetch all translations
+        List<DbTranslation> translations = DbManager.db().getAllTranslations();
+
+        // Write the translations to the file
+        if (translations.size() > 0) {
+            try {
+                Path output = Paths.get(fileName);
+                PrintWriter writer = new PrintWriter(fileName);
+                writer.print("");
+                writer.close();
+
+                // Charset for read and write
+                Charset charset = StandardCharsets.UTF_8;
+                List<String> lines = new ArrayList<>();
+
+                lines.add("DELETE FROM translations WHERE id > 0;");
+
+                for (DbTranslation translation : translations) {
+                    String statement = String.format(insertTranslationStatement,
+                            translation.getId(),
+                            translation.getCode(),
+                            translation.getDescription(),
+                            translation.getType(),
+                            translation.isEnabled() ? "1" : "0",
+                            translation.getDateString(),
+                            translation.getNl(),
+                            translation.getEn(),
+                            translation.getFr());
+                    lines.add(statement);
+                    Main.progress();
+                }
+                if (lines.size() > 0) {
+                    Files.write(output, lines, charset, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                    Main.printLine(TAG, "");
+                    Main.printLine(TAG, "Translations created at " + fileName);
+                } else {
+                    Main.printLine(TAG, "No translations found");
+                }
+            } catch (Exception e) {
+                Main.error(TAG, "Create translations failed", e);
+            }
+        } else {
+            Main.printLine(TAG, "No translations to create");
         }
     }
 

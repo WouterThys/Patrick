@@ -21,10 +21,11 @@ public class Main {
     *
     * */
 
-    private static final String TAG = "MAIN";
+    private static final String TAG = "Patrick";
     private static final String MODE_UPDATE_SCRIPTS_CREATE = "UPDATESCRIPTS_CREATE";
     private static final String MODE_UPDATE_SCRIPTS_EXECUTE = "UPDATESCRIPTS_EXECUTE";
     private static final String MODE_PROCEDURES = "PROCEDURES";
+    private static final String MODE_CREATE_TRANSLATIONS = "TRANSLATIONS_CREATE";
 
     private static final int ARG_MODE = 0;
     private static final int ARG_DB_SERVER = 1;
@@ -37,11 +38,14 @@ public class Main {
     private static final int ARG_TARGET_PROCEDURES = 6;
 
     // UPDATESCRIPTS_CREATE params
-    private static final int ARG_FROM_ID = 5;
+    private static final int ARG_VERSION = 5;
     private static final int ARG_TARGET_UPDATE_SCRIPTS = 6;
 
     // UPDATESCRIPTS_EXECUTE params
-    private static final int ARG_VERSION = 5;
+    //private static final int ARG_VERSION = 5;
+
+    // TRANSLATIONS_CREATE params
+    private static final int ARG_TRANSLATIONS_FILE = 5;
 
 
 
@@ -66,31 +70,45 @@ public class Main {
                         args[ARG_DB_PASSWORD]);
 
                 switch (mode) {
-                    case MODE_PROCEDURES:
-                        print(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
+                    case MODE_PROCEDURES: {
+                        printLine(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
                         if (!Application.app().initialize(dbConnection)) {
                             error(TAG, "Failed to initialize");
                             return;
                         }
                         Application.app().createStoredProcedures(args[ARG_TARGET_DIR], args[ARG_TARGET_PROCEDURES]);
                         break;
-                    case MODE_UPDATE_SCRIPTS_CREATE:
-                        print(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
-                        if (!Application.app().initialize(dbConnection)) {
-                            error(TAG, "Failed to initialize");
-                            return;
-                        }
-                        Application.app().createTableUpdateScripts(Long.valueOf(args[ARG_FROM_ID]), args[ARG_TARGET_UPDATE_SCRIPTS]);
-                        break;
-                    case MODE_UPDATE_SCRIPTS_EXECUTE:
-                        print(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
+                    }
+                    case MODE_UPDATE_SCRIPTS_CREATE: {
+                        printLine(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
                         if (!Application.app().initialize(dbConnection)) {
                             error(TAG, "Failed to initialize");
                             return;
                         }
                         String[] split = args[ARG_VERSION].split("\\.");
-                        Application.app().executeTableUpdateScripts(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]));
+                        Application.app().createTableUpdateScripts(Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]), args[ARG_TARGET_UPDATE_SCRIPTS]);
                         break;
+                    }
+                    case MODE_UPDATE_SCRIPTS_EXECUTE: {
+                        printLine(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
+                        if (!Application.app().initialize(dbConnection)) {
+                            error(TAG, "Failed to initialize");
+                            return;
+                        }
+                        String[] split = args[ARG_VERSION].split("\\.");
+                        Application.app().executeTableUpdateScripts(Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]));
+                        break;
+                    }
+
+                    case MODE_CREATE_TRANSLATIONS: {
+                        printLine(TAG, "Running on mode " + mode + ". Start initialize for schema " + dbConnection.getSchema());
+                        if (!Application.app().initialize(dbConnection)) {
+                            error(TAG, "Failed to initialize");
+                            return;
+                        }
+                        Application.app().createTranslations(args[ARG_TRANSLATIONS_FILE]);
+                        break;
+                    }
 
                     default: error(TAG, "Invalid mode");
                 }
@@ -99,11 +117,16 @@ public class Main {
                 error(TAG, "Error: ", e);
             }
         }
-        System.out.println("Closing up");
+        printLine(TAG,"Closing up");
+        System.out.println("");
     }
 
-    public static void print(String tag, String message) {
-        //System.out.println(tag + ": " + message);
+    public static void printLine(String tag, String message) {
+        System.out.println(tag + ": " + message);
+    }
+
+    public static void progress() {
+        System.out.print(".");
     }
 
     public static void error(String tag, String message) {

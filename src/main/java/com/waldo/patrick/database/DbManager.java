@@ -21,7 +21,11 @@ public class DbManager {
     private static final String sqlLoadForeignKeys = "SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_SCHEMA = '%s';";
     private static final String sqlLoadColumns = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' ORDER BY ORDINAL_POSITION;";
     private static final String sqlGetUpdateScriptsFromId = "SELECT * FROM ww.updatescripts WHERE id >= %d"; // Scripts from Id
+    private static final String sqlGetTranslations = "SELECT * FROM translations";
     private static final String sqlUpdateScriptState = "UPDATE updatescripts SET executed = ?, state = ?, scriptsProcessed = ?, message = ? WHERE id = ?;";
+    private static final String sqlGetUpdateScriptsUntilVersion =
+            "SELECT * FROM updatescripts";
+
     private static final String sqlGetUpdateScriptsToExecute =
             "SELECT * FROM updatescripts WHERE \n" +
                     "(state < 1) AND (\n" +
@@ -52,6 +56,7 @@ public class DbManager {
     private List<DbTable> dbTableList;
     private List<DbColumn> dbColumnList;
     private List<DbForeignKey> dbForeignKeyList;
+    private List<DbTranslation> dbTranslationList;
 
     // region Setup
     public void initialize(DbConnection connection) throws SQLException {
@@ -113,7 +118,6 @@ public class DbManager {
         return dbForeignKeyList;
     }
 
-
     public List<DbTable> getTables(TableType... types) {
         List<DbTable> tables = new ArrayList<>();
         List<TableType> typeList = Arrays.asList(types);
@@ -145,6 +149,13 @@ public class DbManager {
         return foreignKeys;
     }
 
+    public List<DbTranslation> getAllTranslations() {
+        if (dbTranslationList == null) {
+            refreshTranslations();
+        }
+        return dbTranslationList;
+    }
+
 
     public DbTable findTable(String name) {
         return findByName(name, getAllTables());
@@ -172,6 +183,7 @@ public class DbManager {
         refreshTables();
         refreshColumns();
         refreshForeignKeys();
+        refreshTranslations();
     }
 
     public void refreshTables() {
@@ -190,6 +202,11 @@ public class DbManager {
         String sql = String.format(sqlLoadForeignKeys, getSchema());
         dbForeignKeyList = new ArrayList<>();
         dbForeignKeyList.addAll(getFromDb(sql, DbForeignKey::new));
+    }
+
+    public void refreshTranslations() {
+        dbTranslationList = new ArrayList<>();
+        dbTranslationList.addAll(getFromDb(sqlGetTranslations, DbTranslation::new));
     }
 
     private interface ICreateNew<T extends IDbObject> {
@@ -215,6 +232,15 @@ public class DbManager {
     @NonNull
     public List<UpdateScript> getUpdateScriptsFromId(long fromId) {
         String sql = String.format(sqlGetUpdateScriptsFromId, fromId);
+        return getFromDb(sql, UpdateScript::new);
+    }
+
+    @NonNull
+    public List<UpdateScript> getUpdateScriptsUntilVersion(int major, int minor, int build) {
+        String sql = sqlGetUpdateScriptsUntilVersion;
+       /* sql = sql.replace("@M", String.valueOf(major));
+        sql = sql.replace("@m", String.valueOf(minor));
+        sql = sql.replace("@b", String.valueOf(build));*/
         return getFromDb(sql, UpdateScript::new);
     }
 

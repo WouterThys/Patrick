@@ -7,7 +7,6 @@ public interface IDbObject {
 
     String getName();
 
-
     void initFromReader(ResultSet rs) throws SQLException;
 
 }

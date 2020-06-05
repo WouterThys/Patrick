@@ -1,6 +1,7 @@
 com\waldo\patrick\database\classes\UpdateScript.class
 com\waldo\patrick\database\classes\DbConnection.class
 com\waldo\patrick\scripts\IStoredProcedure.class
+com\waldo\patrick\database\classes\DbTranslation.class
 com\waldo\patrick\database\classes\BaseDbObject.class
 com\waldo\patrick\database\classes\DbForeignKey.class
 com\waldo\patrick\database\DbManager.class

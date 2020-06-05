@@ -7,16 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa27b380-b6ec-45c7-95a6-024451a7b871" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTranslation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/insertTranslationStatement.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Patrick-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Patrick-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Patrick-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Patrick-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/IDbObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/IDbObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Patrick-1.0-jar-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Patrick-1.0.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/DbManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/DbManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/insertUpdateScriptStatement.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/insertUpdateScriptStatement.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,158 +43,29 @@
   <component name="CoverageViewManager">
     <option name="myElementSize" value="191" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="39" column="15" lean-forward="true" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-              <folding>
-                <element signature="method#Application#0;class#Application#0" />
-                <element signature="n#!!doc;n#createStoredProcedures#0;n#Application#0" />
-                <element signature="method#createSelectAllScripts#0;class#Application#0" />
-                <element signature="method#createDeleteScripts#0;class#Application#0" />
-                <element signature="method#createFiles#0;class#Application#0" />
-                <element signature="e#12307#12338#0" />
-                <element signature="e#14053#14085#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>ref</find>
-      <find>%s</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/utils/ResourceManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/IDbObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/TableType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbForeignKey.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/BaseDbObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/IScript.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/IStoredProcedure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/StoredProcedure.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/settings/app.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Config.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/selectStatement.txt" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/updateStatement.txt" />
-        <option value="$PROJECT_DIR$/src/main/resources/deleteStatement.txt" />
-        <option value="$PROJECT_DIR$/src/main/resources/deleteLinkStatement.txt" />
-        <option value="$PROJECT_DIR$/src/main/resources/insertLinkStatement.txt" />
-        <option value="$PROJECT_DIR$/src/main/resources/insertStatement.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/ScriptCreator.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/ScriptState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Patrick" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="30" />
-    <option name="y" value="15" />
-    <option name="width" value="1740" />
-    <option name="height" value="1410" />
-  </component>
+  <component name="ProjectId" id="1bhvb0KH9HlYglfPiZDVPNFZhQS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Patrick" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Patrick" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575554781304" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/META-INF" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -194,16 +75,10 @@
       <recent name="C:\Users\gebruiker\Source\Repos\Patrick\src\main\resources" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn install" />
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -221,7 +96,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Patrick.jar" type="JarApplication" factoryName="JAR Application" temporary="true">
+    <configuration name="Patrick.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Patrick_jar/Patrick.jar" />
       <method v="2" />
     </configuration>
@@ -258,59 +133,12 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2766" height="1126" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13895048" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.57645875" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.31991953" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3296146" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32696176" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897383" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3279678" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.24759793" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32932332" />
-    </layout>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -329,18 +157,69 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java</url>
-          <line>226</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" width="1114" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589100466840">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" width="1114" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589100466840" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1589105936544">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589105936544" />
+    <state x="690" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589099910753">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589099910753" />
+    <state x="1982" y="178" width="1736" height="856" key="DiffContextDialog" timestamp="1589097576431">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1982" y="178" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589097576431" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589099954117">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589099954117" />
+    <state width="1877" height="167" key="GridCell.Tab.0.bottom" timestamp="1589114928135">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="167" key="GridCell.Tab.0.bottom/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
+    <state width="1877" height="167" key="GridCell.Tab.0.center" timestamp="1589114928135">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="167" key="GridCell.Tab.0.center/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
+    <state width="1877" height="167" key="GridCell.Tab.0.left" timestamp="1589114928135">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="167" key="GridCell.Tab.0.left/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
+    <state width="1877" height="167" key="GridCell.Tab.0.right" timestamp="1589114928135">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="167" key="GridCell.Tab.0.right/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
+    <state x="255" y="140" width="816" height="512" key="MultipleFileMergeDialog" timestamp="1589097474366">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="255" y="140" width="816" height="512" key="MultipleFileMergeDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589097474366" />
+    <state x="762" y="222" key="RollbackChangesDialog" timestamp="1589097279149">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="762" y="222" key="RollbackChangesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589097279149" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1589100008101">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589100008101" />
+    <state x="1929" y="0" width="1331" height="804" maximized="true" key="dock-window-1" timestamp="1589106865071">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1929" y="0" width="1331" height="804" maximized="true" key="dock-window-1/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589106865071" />
+    <state x="1920" y="0" width="1605" height="804" key="dock-window-2" timestamp="1589107561460">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1605" height="804" key="dock-window-2/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589107561460" />
+    <state x="1141" y="258" width="672" height="677" key="run.anything.popup" timestamp="1591358454361">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1141" y="258" width="672" height="677" key="run.anything.popup/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591358454361" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -350,352 +229,6 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.pom">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbForeignKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#398#422#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/IDbObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/sql/ResultSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="524" column="52" selection-start-line="524" selection-start-column="52" selection-end-line="524" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/TableType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/IStoredProcedure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/scripts/StoredProcedure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#187#188#0" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#1152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-67">
-          <caret line="14" column="86" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
-          <folding>
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#434#435#0" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-            <element signature="e#540#541#0" expanded="true" />
-            <element signature="e#576#577#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#706#707#0" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#860#861#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.18/mysql-connector-java-8.0.18.jar!/com/mysql/cj/jdbc/MysqlDataSource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/settings/app.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/utils/ResourceManager.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/settings/AppSettings.java" />
-    <entry file="file://$PROJECT_DIR$/Test/linkcellsmachinesInsert.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/linkcellsmachinesDelete.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Config.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/resources.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/selectStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/settings.properties" />
-    <entry file="file://$PROJECT_DIR$/Test/bomitemsSelectAll.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/deleteStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/deleteLinkStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/insertLinkStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/updateStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/insertStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/ScriptCreator.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="130" selection-start-column="130" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/BaseDbObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="39" column="15" lean-forward="true" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-          <folding>
-            <element signature="method#Application#0;class#Application#0" />
-            <element signature="n#!!doc;n#createStoredProcedures#0;n#Application#0" />
-            <element signature="method#createSelectAllScripts#0;class#Application#0" />
-            <element signature="method#createDeleteScripts#0;class#Application#0" />
-            <element signature="method#createFiles#0;class#Application#0" />
-            <element signature="e#12307#12338#0" />
-            <element signature="e#14053#14085#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" column="86" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/UpdateScript.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="31" column="54" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2565#2566#0" expanded="true" />
-            <element signature="e#2604#2605#0" expanded="true" />
-            <element signature="e#2665#2666#0" expanded="true" />
-            <element signature="e#2721#2722#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/ScriptState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#318#319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>Patrick:jar</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>ksoap2-android-assembly-2.6.4-jar-with-dependencies (3)</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Patrick</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: com.google.protobuf:protobuf-java:3.6.1</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
   <component name="mavenExecuteGoalHistory">
     <option value="$PROJECT_DIR$" />

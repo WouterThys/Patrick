@@ -13,7 +13,7 @@ public class DbColumn extends BaseDbObject {
     private boolean isNullable;
     private boolean isPrimaryKey;
     private String dataType;//
-    private int characterLength;
+    private long characterLength;
     private int numericPrecision;//
 
     private DbTable table;
@@ -36,7 +36,7 @@ public class DbColumn extends BaseDbObject {
         ordinal = rs.getInt("ORDINAL_POSITION");
         defaultValue = rs.getString("COLUMN_DEFAULT");
         dataType = rs.getString("DATA_TYPE");
-        characterLength = rs.getInt("CHARACTER_MAXIMUM_LENGTH");
+        characterLength = rs.getLong("CHARACTER_MAXIMUM_LENGTH");
         numericPrecision = rs.getInt("NUMERIC_PRECISION");
         String nullable = rs.getString("IS_NULLABLE");
         String key = rs.getString("COLUMN_KEY");
@@ -106,7 +106,7 @@ public class DbColumn extends BaseDbObject {
         return dataType;
     }
 
-    public int getCharacterLength() {
+    public long getCharacterLength() {
         return characterLength;
     }
 

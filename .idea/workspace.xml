@@ -5,27 +5,12 @@
       <artifact name="Patrick:jar" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fa27b380-b6ec-45c7-95a6-024451a7b871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbTranslation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/insertTranslationStatement.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/IDbObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/IDbObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/insertUpdateScriptStatement.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Patrick-1.0-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Patrick-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/DbManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/DbManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/insertUpdateScriptStatement.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/insertUpdateScriptStatement.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +49,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575554781304" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/META-INF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -85,7 +71,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.waldo.patrick.Main" />
       <module name="Patrick" />
-      <option name="PROGRAM_PARAMETERS" value="PROCEDURES 192.168.0.248 ww waldo waldow C:\Users\gebruiker\Source\Repos\WorkWatch\ExtraData\Database\procedures\ C:\Users\gebruiker\Source\Repos\WorkWatch\ExtraData\Database\procedures\procedures.sql" />
+      <option name="PROGRAM_PARAMETERS" value="PROCEDURES localhost ww_htms waldo waldow D:\HTMS\Database\procedures\ D:\HTMS\Database\procedures\procedures.sql" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.waldo.patrick.*" />
@@ -111,6 +97,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -159,67 +146,16 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="414" y="175" width="1114" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589100466840">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="175" width="1114" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589100466840" />
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1589105936544">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589105936544" />
-    <state x="690" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589099910753">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="310" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589099910753" />
-    <state x="1982" y="178" width="1736" height="856" key="DiffContextDialog" timestamp="1589097576431">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1982" y="178" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589097576431" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589099954117">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589099954117" />
-    <state width="1877" height="167" key="GridCell.Tab.0.bottom" timestamp="1589114928135">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.bottom/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
-    <state width="1877" height="167" key="GridCell.Tab.0.center" timestamp="1589114928135">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.center/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
-    <state width="1877" height="167" key="GridCell.Tab.0.left" timestamp="1589114928135">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.left/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
-    <state width="1877" height="167" key="GridCell.Tab.0.right" timestamp="1589114928135">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.right/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589114928135" />
-    <state x="255" y="140" width="816" height="512" key="MultipleFileMergeDialog" timestamp="1589097474366">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="255" y="140" width="816" height="512" key="MultipleFileMergeDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589097474366" />
-    <state x="762" y="222" key="RollbackChangesDialog" timestamp="1589097279149">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="762" y="222" key="RollbackChangesDialog/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589097279149" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1589100008101">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589100008101" />
-    <state x="1929" y="0" width="1331" height="804" maximized="true" key="dock-window-1" timestamp="1589106865071">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1929" y="0" width="1331" height="804" maximized="true" key="dock-window-1/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589106865071" />
-    <state x="1920" y="0" width="1605" height="804" key="dock-window-2" timestamp="1589107561460">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="0" width="1605" height="804" key="dock-window-2/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589107561460" />
-    <state x="1141" y="258" width="672" height="677" key="run.anything.popup" timestamp="1591358454361">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1141" y="258" width="672" height="677" key="run.anything.popup/0.0.1920.1040/3840.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591358454361" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">

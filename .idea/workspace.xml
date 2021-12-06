@@ -11,6 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fa27b380-b6ec-45c7-95a6-024451a7b871" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waldo/patrick/database/classes/DbColumn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbColumn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/waldo/patrick/database/classes/DbColumn.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,9 +152,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Main.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/waldo/patrick/Application.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
